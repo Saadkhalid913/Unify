@@ -9,3 +9,8 @@ require("./startup/middlewearInit")(app)
 require("./startup/configInit")()
 
 mongoose.connect(config.get("URI"), { useUnifiedTopology: true , useNewUrlParser: true})
+
+
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {console.log("Listening on port: " + PORT)})
