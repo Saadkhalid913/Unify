@@ -2,6 +2,7 @@ import config from "config"
 import cors from "cors"
 import express from "express"
 import mongoose from "mongoose"
+import extracurricularSchema from "./models/extracurricularSchema"
 
 const app = express()
 

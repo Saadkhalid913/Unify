@@ -16,11 +16,14 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "joi": "^17.4.2",
+    "lodash": "^4.17.21",
     "mongoose": "^5.13.8",
     "ts-node": "^10.2.1",
     "typescript": "^4.3.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/lodash": "^4.14.172"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node-dev --respawn index.ts",

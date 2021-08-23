@@ -1,9 +1,10 @@
-import extracurricularSchema from "./extracurricularSchema";
-
+import userSchema from "./userSchema"
+import extracurricularSchema from "./extracurricularSchema"
 import mongoose from "mongoose"
 
-const extracurricularModel = mongoose.model("extracurriculars", extracurricularSchema)
 
-export default {
-    extracurricularModel
-}
+console.log(extracurricularSchema)
+export const extracurricularModel = mongoose.model("extracurriculars", extracurricularSchema)
+export const userModel = mongoose.model("users", userSchema)
+
+

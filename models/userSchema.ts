@@ -1,3 +1,4 @@
+import { array } from "joi"
 import mongoose from "mongoose"
 
 
@@ -24,4 +25,18 @@ const userSchema = new mongoose.Schema({
         maxlength: 255,
         match: emailValidationPattern
       },
+
+    password: {
+        type: String,
+        required: true,
+        maxlength: 512,
+    },
+
+    extracurriculars: {
+        type: Array,
+        default: []  
+    }
 })
+
+
+export default userSchema
