@@ -1,6 +1,8 @@
-const mongoose = require("mongoose")
-const express = require("express")
-const config = require("config")
+import config from "config"
+import cors from "cors"
+import express from "express"
+import mongoose from "mongoose"
+
 const app = express()
 
 
@@ -10,6 +12,7 @@ require("./startup/configInit")()
 
 mongoose.connect(config.get("URI"), { useUnifiedTopology: true , useNewUrlParser: true})
 
+require("./startup/routesInit")(app)
 
 const PORT = process.env.PORT || 3000
 
