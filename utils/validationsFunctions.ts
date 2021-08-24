@@ -9,7 +9,7 @@ export function validateBody(request : any, response: express.Response, fields: 
     const { body } = request 
     for (let field of fields) {
         if (!body[field]) {
-            response.send(`please provide the field: ${field}`)
+            response.status(400).send(`please provide the field: ${field}`)
             return false
     }}      
 
@@ -25,17 +25,17 @@ export async function validateSignupBody(req: any, res: express.Response): Promi
     }
 
     if (!body.password || body.password.length < 8) {
-       res.send("Please enter a password >= 8 characters")
+       res.status(400).send("Please enter a password >= 8 characters")
        return false
     }
 
     if (!body.username || body.username.length < 8) {
-        res.send("Please enter a valid username (longer than 8 characters)")
+        res.status(400).send("Please enter a valid username (longer than 8 characters)")
         return false
     }
     
     if (!body.email || !body.email.match(emailValidationPattern)) {
-        res.send("Please enter a valid email")
+        res.status(400).send("Please enter a valid email")
         return false
     } 
 
@@ -43,12 +43,12 @@ export async function validateSignupBody(req: any, res: express.Response): Promi
     const existingUsernameUser = await userModel.findOne({username: body.username})
 
     if (existingUsernameUser) {
-        res.send(`Username: ${body.username} is not available`)
+        res.status(400).send(`Username: ${body.username} is not available`)
         return false 
     }
 
     if (existingEmailUser) {
-        res.send(`Email: ${body.email} is already in use`)
+        res.status(400).send(`Email: ${body.email} is already in use`)
         return false 
     }
 
