@@ -7,6 +7,7 @@ import { validateBody , validateSignupBody} from "../utils/validationsFunctions"
 import * as jwt from "jsonwebtoken"
 import { auth } from "../middlewear/auth"
 
+
 const router = express.Router()
 
 
