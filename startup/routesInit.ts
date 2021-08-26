@@ -1,4 +1,4 @@
-const userRouter = require("../routes/users")
+import userRouter from "../routes/users"
 import extracurricularRouter from "../routes/extracurriculars"
 import applicationRouter from "../routes/applications"
 module.exports = (app: any) => {  

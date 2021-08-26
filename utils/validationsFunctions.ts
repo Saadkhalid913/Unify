@@ -105,13 +105,10 @@ export async function validateApplicationBody(req: any, res: express.Response): 
     })
     try {
         const isValid = await schema.validateAsync(req.body)
-        console.log(isValid)
         return new Promise((resolve, reject) => resolve(true))
-
     }
     catch(err){
         res.send(err.details[0].message)
         return new Promise((resolve, reject) => resolve(false))
-
     }
 }

@@ -1,3 +1,6 @@
+// This file contains all collections for the Unify API 
+
+
 import userSchema from "./userSchema"
 import extracurricularSchema from "./extracurricularSchema"
 import applicationSchema from "./applicationSchema"

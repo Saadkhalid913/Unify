@@ -8,11 +8,11 @@ import * as jwt from "jsonwebtoken"
 import { auth } from "../middlewear/auth"
 
 
-const router = express.Router()
+const userRouter = express.Router()
 
 
 
-router.post("/", async (req: any, res: any, next: Function) => {
+userRouter.post("/", async (req: any, res: any, next: Function) => {
     const isValid = await validateSignupBody(req,res)
     if (!isValid) return 
     const {username, password, email } = req.body
@@ -32,7 +32,7 @@ router.post("/", async (req: any, res: any, next: Function) => {
 })
 
 
-router.get("/verify", auth, (req: any, res: express.Response) => {
+userRouter.get("/verify", auth, (req: any, res: express.Response) => {
     res.send({message: "You are verified!"})
 })
 
@@ -44,4 +44,4 @@ async function encryptPassword(password: string) : Promise<string> {
     return bcrypt.hash(password, salt)
 }   
 
-module.exports = router
+export default userRouter
