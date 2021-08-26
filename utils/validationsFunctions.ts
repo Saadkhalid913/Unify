@@ -1,9 +1,14 @@
+// this module contains the required 
+
+
 import express, { response } from "express"
 const emailValidationPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 import { userModel } from "../models/models"
 import mongoose from "mongoose"
 import joi from "joi"
 import Joi from "joi"
+import { isJSDocOverrideTag } from "typescript"
+
 
 
 export function validateBody(request : any, response: express.Response, fields: Array<string>): any {
@@ -99,9 +104,14 @@ export async function validateApplicationBody(req: any, res: express.Response): 
                                 .options({convert: true})
                                 .required(),
 
+        expectedResponseDate : joi.date()
+                                .options({convert: true}),
+
         relevantExtracurriculars: joi.array(),
 
-        notes: joi.string().min(1).max(4096)
+        notes: joi.string().min(1).max(4096),
+
+        includeAllExtraCurriculars: joi.number()
     })
     try {
         const isValid = await schema.validateAsync(req.body)

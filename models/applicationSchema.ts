@@ -26,15 +26,15 @@ const applicationSchema = new mongoose.Schema({
         required: true,
     },
 
+    expectedResponseDate: Date, 
+
     relevantExtracurriculars: {
         type: Array,
         required: false,
         default: []
     },
 
-    notes: {
-        type: String
-    }
+    notes: String,
 })
 
 

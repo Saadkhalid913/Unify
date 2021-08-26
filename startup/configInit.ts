@@ -1,3 +1,6 @@
+// this module asserts that all required configurations variables are defined at startup 
+
+
 import config from "config"
 
 module.exports = () => {

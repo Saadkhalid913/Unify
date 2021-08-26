@@ -9,10 +9,16 @@ const applicationRouter = express.Router()
 
 applicationRouter.post("/", auth, async (req: any,res: express.Response) => {
     const isValid = await validateApplicationBody(req,res)
-    if (!isValid) return 
-    
-    const newApplication: any = new applicationModel(req.body)
     const userID = req._user._id
+
+    if (!isValid) return 
+
+    if (!!parseInt(req.body.includeAllExtraCurriculars)) {
+        const extracurriculars = await userModel.findById(userID).select("extracurriculars")
+        req.body.relevantExtracurriculars = extracurriculars["extracurriculars"]
+    }
+
+    const newApplication: any = new applicationModel(req.body)
 
     try {
         const result = await userModel.findByIdAndUpdate(userID, {$push : { applications: applicationModel}})
