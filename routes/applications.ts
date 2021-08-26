@@ -19,11 +19,11 @@ applicationRouter.post("/", auth, async (req: any,res: express.Response) => {
     }
 
     const newApplication: any = new applicationModel(req.body)
-
+    
     try {
-        const result = await userModel.findByIdAndUpdate(userID, {$push : { applications: applicationModel}})
-        console.log("RESULT: ", result)
-        res.send(newApplication._doc)
+        const result = await newApplication.save()
+        await userModel.findByIdAndUpdate(userID, {$push : { applications: result._id}})
+        res.send(result)
     }
     catch(err) {
         res.status(503).send("There was an error")

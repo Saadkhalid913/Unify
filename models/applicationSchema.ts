@@ -31,7 +31,8 @@ const applicationSchema = new mongoose.Schema({
     relevantExtracurriculars: {
         type: Array,
         required: false,
-        default: []
+        default: [],
+        ref: "extracurriculars"
     },
 
     notes: String,

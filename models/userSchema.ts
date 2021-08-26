@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
     extracurriculars: {
         type: Array,
         default: [], 
-        ref: "extracurriculars"
+        ref: "extracurriculars",
     },
 
     targetSchools: {
@@ -48,8 +48,8 @@ const userSchema = new mongoose.Schema({
 
     applications: {
         type: Array,
-        required: false,
-        ref: "applications"
+        ref: "applications",
+        default :[]
     }
 })
 

@@ -2,7 +2,7 @@ import config from "config"
 import cors from "cors"
 import express from "express"
 import mongoose from "mongoose"
-import extracurricularSchema from "./models/extracurricularSchema"
+
 
 const app = express()
 
@@ -12,6 +12,8 @@ require("./startup/middlewearInit")(app)
 require("./startup/configInit")()
 
 mongoose.connect(config.get("URI"), { useUnifiedTopology: true , useNewUrlParser: true})
+mongoose.set('useFindAndModify', false);
+
 
 require("./startup/routesInit")(app)
 
