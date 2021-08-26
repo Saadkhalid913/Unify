@@ -5,7 +5,10 @@ import mongoose from "mongoose"
 
 
 export function validateBody(request : any, response: express.Response, fields: Array<string>): any {
-    // this is a middlewear function used to ensure that the 
+    // This function will take a request, response, and array of fields and 
+    // validate the body of a request to ensure all fields are defined 
+    // DOES NOT CHECK FOR TYPES 
+    
     const { body } = request 
     for (let field of fields) {
         if (!body[field]) {
@@ -52,6 +55,17 @@ export async function validateSignupBody(req: any, res: express.Response): Promi
         return false 
     }
 
+
+    return true
+}
+
+
+export async function validateExtracurricularBody(req: any, res: express.Response): Promise<boolean> {
+    const { body } = req
+
+    if (!validateBody(req,res,["name", "dateStarted"])) {
+        return false 
+    }
 
     return true
 }

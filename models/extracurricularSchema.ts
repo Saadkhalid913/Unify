@@ -22,8 +22,7 @@ const extracurricularSchema = new mongoose.Schema({
 
     dateEnded: {
         type: Date,
-        // @ts-ignore
-        required: () => !this.onGoing
+        required: false 
     },
 
     onGoing: {
