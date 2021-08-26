@@ -44,9 +44,4 @@ async function encryptPassword(password: string) : Promise<string> {
     return bcrypt.hash(password, salt)
 }   
 
-
-
-
-
-
 module.exports = router

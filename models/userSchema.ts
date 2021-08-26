@@ -37,6 +37,12 @@ const userSchema = new mongoose.Schema({
     extracurriculars: {
         type: Array,
         default: []  
+    },
+
+    targetSchools: {
+        type: Array,
+        required: true, 
+        default: [],
     }
 })
 

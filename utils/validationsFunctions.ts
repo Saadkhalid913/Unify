@@ -2,6 +2,8 @@ import express, { response } from "express"
 const emailValidationPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 import { userModel } from "../models/models"
 import mongoose from "mongoose"
+import joi from "joi"
+import Joi from "joi"
 
 
 export function validateBody(request : any, response: express.Response, fields: Array<string>): any {
@@ -68,4 +70,48 @@ export async function validateExtracurricularBody(req: any, res: express.Respons
     }
 
     return true
+}
+
+
+export async function validateApplicationBody(req: any, res: express.Response): Promise<boolean> {
+    
+    
+    if (!validateBody(req,res,["uniName", "programName", "applicationOpenDate", "applicationCloseDate"])) {
+        return new Promise((resolve, reject) => resolve(false))
+    }
+
+    const schema = joi.object({
+        uniName: Joi.string()
+            .min(6)
+            .max(255)
+            .required(),
+        
+        programName: joi.string()
+                        .min(6)
+                        .max(255)
+                        .required(),
+        
+        applicationOpenDate: joi.date()
+                                .options({convert: true})
+                                .required(),
+
+        applicationCloseDate: joi.date()
+                                .options({convert: true})
+                                .required(),
+
+        relevantExtracurriculars: joi.array(),
+
+        notes: joi.string().min(1).max(4096)
+    })
+    try {
+        const isValid = await schema.validateAsync(req.body)
+        console.log(isValid)
+        return new Promise((resolve, reject) => resolve(true))
+
+    }
+    catch(err){
+        res.send(err.details[0].message)
+        return new Promise((resolve, reject) => resolve(false))
+
+    }
 }

@@ -6,9 +6,9 @@ import mongoose from "mongoose"
 
 
 
-const router = express.Router()
+const extracurricularRouter = express.Router()
 
-router.post("/", auth, async (req: any, res: express.Response) => {
+extracurricularRouter.post("/", auth, async (req: any, res: express.Response) => {
     const isValid = await validateExtracurricularBody(req,res)
     if (!isValid) return 
     const { name , description , dateStarted, dateEnded, onGoing } = req.body 
@@ -20,4 +20,4 @@ router.post("/", auth, async (req: any, res: express.Response) => {
 })
 
 
-export default router 
+export default extracurricularRouter
