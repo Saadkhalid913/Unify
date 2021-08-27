@@ -7,20 +7,8 @@ import { applicationModel, userModel } from "../models/models"
 import { validateApplicationBody } from "../utils/validationsFunctions"
 const applicationRouter = express.Router()
 
-// type Application = {
-//     _id: String;
-//     uniName: String;
-//     programName: String;
-//     applicationOpenDate: Number;
-//     applicationCloseDate: Number;
-//     expectedResponseDate? : Number;
-//     relevantExtracurriculars: [mongoose.ObjectId];
-//     notes: String;
-//     save: () => Application;
-// }
-
 interface Application {
-    _id: String;
+    _id: mongoose.ObjectId;
     uniName: String;
     programName: String;
     applicationOpenDate: Number;
@@ -32,6 +20,7 @@ interface Application {
 }
 
 interface User {
+    _id: mongoose.ObjectId;
     username: String;
     email: String;
     extracurriculars: any[];

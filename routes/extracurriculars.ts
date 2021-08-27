@@ -6,6 +6,8 @@ import mongoose from "mongoose"
 
 
 
+
+
 const extracurricularRouter = express.Router()
 
 extracurricularRouter.post("/", auth, async (req: any, res: express.Response) => {
@@ -25,6 +27,22 @@ extracurricularRouter.get("/", auth, async (req: any, res: express.Response) => 
     const extracurriculars = await userModel.findById(userID).select("extracurriculars").populate("extracurriculars")
     res.send(extracurriculars)
 })
+
+extracurricularRouter.get("/:id", auth, async (req: any, res: express.Response) => {
+    const extracurricularID = req.params.id 
+    const userID = req._user._id
+    const extracurricularInfo = await userModel.findById(userID).select("extracurriculars")
+    const extracurriculars : mongoose.ObjectId[] = extracurricularInfo["extracurriculars"]
+    const index = extracurriculars.findIndex((e) => e.toString() === extracurricularID)
+
+    if (index < 0) return res.status(401).send("Resource not found")
+
+    const extracurricular = await extracurricularModel.findById(extracurriculars[index])
+    return res.send(extracurricular)
+})
+
+
+
 
 
 export default extracurricularRouter
