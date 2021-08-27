@@ -1,10 +1,20 @@
+
+import { sample } from 'lodash'
 import React, { Component } from 'react'
-import { Route } from "react-router-dom"
+import { BrowserRouter, Route, RouteComponentProps, Switch } from "react-router-dom"
 
 export default class App extends Component  {
     state = {}
 
     render() {
-       return (<div></div>)
+       return (
+        <BrowserRouter>
+            <Switch>
+                <Route path = "/" render = {(props) => <Sample {...props}/>}/>
+            </Switch>
+        </BrowserRouter>
+       )
     }
 }
+
+const Sample = (props: any) => <div>HEllo</div> 
