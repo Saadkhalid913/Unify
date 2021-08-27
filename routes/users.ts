@@ -31,6 +31,15 @@ userRouter.post("/", async (req: any, res: any, next: Function) => {
     }
 })
 
+userRouter.post("/login", async (req: any, res: express.Response) => {
+    // WIP ROUTE 
+
+    const { email , password } = req.body 
+    res.send({message: "You are logged in !"})
+    console.log(req.body)
+    console.log(req.headers)
+})
+
 
 userRouter.get("/verify", auth, (req: any, res: express.Response) => {
     res.send({message: "You are verified!"})

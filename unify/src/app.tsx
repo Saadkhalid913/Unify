@@ -1,7 +1,6 @@
-
-import { sample } from 'lodash'
 import React, { Component } from 'react'
-import { BrowserRouter, Route, RouteComponentProps, Switch } from "react-router-dom"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
+import LoginPage from './components/LoginPage/LoginPage'
 
 export default class App extends Component  {
     state = {}
@@ -10,11 +9,10 @@ export default class App extends Component  {
        return (
         <BrowserRouter>
             <Switch>
-                <Route path = "/" render = {(props) => <Sample {...props}/>}/>
+                <Route path = "/" render = {(props) => <LoginPage {...props} />} />
             </Switch>
         </BrowserRouter>
        )
     }
 }
 
-const Sample = (props: any) => <div>HEllo</div> 
