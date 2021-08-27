@@ -13,7 +13,6 @@ const LoginPage = (props: RouteComponentProps) => {
 }
 
 async function HandleLogin(data: LoginData): Promise<void> {
-
     // WIP 
     const response = await axios.post("http://localhost:3000/users/login",  data, {headers: {}})
     console.log(response.data)

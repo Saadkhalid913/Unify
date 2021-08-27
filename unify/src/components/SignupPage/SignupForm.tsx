@@ -23,7 +23,7 @@ const SignupForm = (props: SignupFormProps) => {
                 <FormInput name = "Email" type = "email" onChange = {setEmail}/>
                 <FormInput name = "Password (Minimum 8 characters" type = "password" onChange = {setPassword}/>
             </div>
-            <button onClick ={() => props.onSubmit({username, email, password})} ></button>
+            <button onClick ={() => props.onSubmit({username, email, password})} className = "signup-submit-btn">Sign Up</button>
         </div>
     )
 }
