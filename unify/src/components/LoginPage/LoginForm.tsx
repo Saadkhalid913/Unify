@@ -1,5 +1,6 @@
-import React, {ChangeEvent, useState} from 'react'
-
+import React, {useState} from 'react'
+import FormInput from '../FormInput'
+import { Link } from "react-router-dom"
 export interface LoginData {
     email : String;
     password : String
@@ -16,12 +17,11 @@ const LoginForm = (props: LoginFormProps) => {
     return (
         <div className = "login-form-wrapper">
             <div className = "login-form">
-                <div className="login-form">
-                    <input type = "email" name = "email" onChange={(e: ChangeEvent<HTMLInputElement> ) : any => setEmail(e.target.value)} />
-                    <input type = "password" name = "password" onChange={(e: ChangeEvent<HTMLInputElement> ) : any => setPassword(e.target.value)}/>
+                    <FormInput type = "email" name = "email" onChange = {setEmail} />
+                    <FormInput type = "password" name = "password" onChange = {setPassword} />
                     <button className="login-submit-btn" onClick={() => props.onSubmit({email, password})}>Log in</button>
-                </div>
             </div>
+            <Link to = "/signup">Don't have an account? Sign up here.</Link>
         </div>
     )
 }
