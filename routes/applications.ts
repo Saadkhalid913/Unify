@@ -5,6 +5,7 @@ import mongoose from "mongoose"
 import { auth } from "../middlewear/auth"
 import { applicationModel, userModel } from "../models/models"
 import { validateApplicationBody } from "../utils/validationsFunctions"
+
 const applicationRouter = express.Router()
 
 interface Application {

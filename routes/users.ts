@@ -36,8 +36,6 @@ userRouter.post("/login", async (req: any, res: express.Response) => {
 
     const { email , password } = req.body 
     res.send({message: "You are logged in !"})
-    console.log(req.body)
-    console.log(req.headers)
 })
 
 

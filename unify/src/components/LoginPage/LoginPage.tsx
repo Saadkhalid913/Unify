@@ -2,11 +2,13 @@ import React from 'react'
 import LoginForm, { LoginData } from './LoginForm'
 import axios from "axios"
 import { RouteComponentProps } from 'react-router-dom'
+import Navbar from '../Navbar'
 
 
 const LoginPage = (props: RouteComponentProps) => {
     return (
         <div className = "login-page-wrapper">
+            <Navbar />
             <LoginForm onSubmit = {HandleLogin}/>
         </div>
     )

@@ -5,9 +5,6 @@ import {auth} from "../middlewear/auth"
 import mongoose from "mongoose"
 
 
-
-
-
 const extracurricularRouter = express.Router()
 
 extracurricularRouter.post("/", auth, async (req: any, res: express.Response) => {

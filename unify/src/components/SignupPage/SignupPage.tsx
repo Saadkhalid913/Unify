@@ -1,15 +1,20 @@
 import React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import SignupForm, {SignupData} from './SignupForm'
+import Navbar from '../Navbar'
+
 
 const SignupPage = (props: RouteComponentProps) => {
     return (
-        <SignupForm onSubmit={SubmitSignup}/>
+        <div className = "signup-page-wrapper">
+            <Navbar />
+            <SignupForm onSubmit={SubmitSignup}/>
+        </div>
+
     )
 }
 
 async function SubmitSignup(data: SignupData) : Promise<void> {
-    console.log(data)
     return new Promise((resolve, reject) => null)
 }
 
