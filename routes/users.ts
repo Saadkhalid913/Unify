@@ -10,7 +10,29 @@ import { auth } from "../middlewear/auth"
 
 const userRouter = express.Router()
 
+interface User {
+    _id: mongoose.ObjectId;
+    username: String;
+    email: String;
+    extracurriculars: any[];
+    applications: Application[];
+    targetSchools: String[];
+    password: string;
+    generateAuthToken: () => string
 
+}
+
+interface Application {
+    _id: mongoose.ObjectId;
+    uniName: String;
+    programName: String;
+    applicationOpenDate: Number;
+    applicationCloseDate: Number;
+    expectedResponseDate? : Number;
+    relevantExtracurriculars: mongoose.ObjectId[];
+    notes: String;
+    save: () => Application;
+}
 
 userRouter.post("/", async (req: any, res: any, next: Function) => {
     const isValid = await validateSignupBody(req,res)
@@ -32,10 +54,15 @@ userRouter.post("/", async (req: any, res: any, next: Function) => {
 })
 
 userRouter.post("/login", async (req: any, res: express.Response) => {
-    // WIP ROUTE 
-
     const { email , password } = req.body 
-    res.send({message: "You are logged in !"})
+    const user : User = await userModel.findOne({email})
+    const isValid = await bcrypt.compare(password, user.password)
+    if (isValid) {
+        return res.send({user_auth_token: user.generateAuthToken()})
+    }
+    else {
+        return res.send({error: "Invalid credentials"})
+    }
 })
 
 
