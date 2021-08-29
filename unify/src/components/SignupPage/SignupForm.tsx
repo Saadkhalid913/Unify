@@ -18,14 +18,14 @@ const SignupForm = (props: SignupFormProps) => {
 
     return (
         <div className = "signup-form-wrapper">
-            <div className = "signup-page">
+            <div className = "signup-form">
                 <FormInput name = "Username" type = "text" onChange = {setUsername}/>
                 <FormInput name = "Email" type = "email" onChange = {setEmail}/>
-                <FormInput name = "Password (Minimum 8 characters" type = "password" onChange = {setPassword}/>
+                <FormInput name = "Password (Minimum 8 characters)" type = "password" onChange = {setPassword}/>
             </div>
-            <button onClick ={() => props.onSubmit({username, email, password})} className = "signup-submit-btn">Sign Up</button>
+                <button onClick ={() => props.onSubmit({username, email, password})} className = "signup-submit-btn">Sign Up</button>
         </div>
     )
-}
 
+}
 export default SignupForm

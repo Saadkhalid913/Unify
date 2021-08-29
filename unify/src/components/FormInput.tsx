@@ -9,7 +9,13 @@ export interface FormInputProps {
 
 const FormInput = (props: FormInputProps) => {
     const {name, type, onChange} = props
-    return <input type = {type} name = {name} onChange={(e: ChangeEvent<HTMLInputElement>) : any => onChange(e.target.value)} />  
+    return (
+        <div className = "form-input">
+            <label htmlFor={name} >{name}</label>
+            <input type = {type} name = {name} onChange={(e: ChangeEvent<HTMLInputElement>) : any => onChange(e.target.value)} /> 
+        </div>
+
+    ) 
 }
 
 export default FormInput

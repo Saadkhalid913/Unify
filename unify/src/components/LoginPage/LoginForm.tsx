@@ -19,8 +19,8 @@ const LoginForm = (props: LoginFormProps) => {
             <div className = "login-form">
                     <FormInput type = "email" name = "email" onChange = {setEmail} />
                     <FormInput type = "password" name = "password" onChange = {setPassword} />
-                    <button className="login-submit-btn" onClick={() => props.onSubmit({email, password})}>Log in</button>
             </div>
+            <button className="login-submit-btn" onClick={() => props.onSubmit({email, password})}>Log in</button>
             <Link to = "/signup">Don't have an account? Sign up here.</Link>
         </div>
     )
