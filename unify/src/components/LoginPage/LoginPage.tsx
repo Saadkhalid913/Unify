@@ -10,8 +10,9 @@ import { toast } from 'react-toastify'
 const LoginPage = (props: RouteComponentProps) => {
     const { setToken } = useContext(tokenContext)
     return (
-        <div className = "login-page-wrapper">
+        <React.Fragment>
             <Navbar />
+        <div className = "login-page-wrapper">
             <LoginForm onSubmit = {async (data: LoginData) : Promise<void> => {
                 const response = await axios.post("http://localhost:3000/users/login",  data)
                 if (response.status !== 200) {
@@ -23,6 +24,7 @@ const LoginPage = (props: RouteComponentProps) => {
 
             }}/>
         </div>
+        </React.Fragment>
     )
 }
 

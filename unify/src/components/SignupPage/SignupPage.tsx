@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import SignupForm, {SignupData} from './SignupForm'
 import Navbar from '../Navbar'
@@ -9,11 +9,12 @@ toast.configure()
 
 const SignupPage = (props: RouteComponentProps) => {
     return (
-        <div className = "signup-page-wrapper">
+        <Fragment>
             <Navbar />
+             <div className = "signup-page-wrapper">
             <SignupForm onSubmit={SubmitSignup}/>
-        </div>
-
+            </div>
+        </Fragment>
     )
 }
 
