@@ -81,5 +81,15 @@ applicationRouter.get("/:id", auth, async (req: any, res: express.Response) => {
     return res.send(userApplications[applicationIndex])
 })
 
+applicationRouter.get("/", auth, async (req: any, res: express.Response) => {
+    const applicationID = req.params.id
+    const userID = req._user._id
+    
+    const userApplicationInfo = await userModel.findById(userID).select("applications").populate("applications")
+    const userApplications : Application[] = userApplicationInfo["applications"] // we take the application array out of the response object 
+
+    return res.send(userApplications)
+})
+
 
 export default applicationRouter

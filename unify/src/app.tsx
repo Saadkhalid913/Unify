@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch } from "react-router-dom"
+import Homepage from './components/HomePage/HomePage'
 import LoginPage from './components/LoginPage/LoginPage'
 import SignupPage from './components/SignupPage/SignupPage'
 import tokenContext from "./contexts/tokenContext"
@@ -19,6 +20,7 @@ export default class App extends Component  {
             <Switch>
                 <Route path = "/login" render = {(props) => <LoginPage {...props} />} />
                 <Route path = "/signup" render = {(props) => <SignupPage {...props} />} />
+                <Route path = "/" exact render = {(props) => <Homepage {...props} />} />
             </Switch>
         </BrowserRouter>
         </tokenContext.Provider>
@@ -26,7 +28,6 @@ export default class App extends Component  {
     }
     setToken = (token: string): void =>{
         this.setState({token})
-        console.log(token)
     }
     
     

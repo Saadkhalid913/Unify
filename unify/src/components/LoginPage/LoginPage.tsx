@@ -19,7 +19,7 @@ const LoginPage = (props: RouteComponentProps) => {
                     return 
                 }
                 setToken(response.data.user_auth_token)
-                console.log(response.data)
+                props.history.push("/")
 
             }}/>
         </div>
