@@ -112,3 +112,17 @@
   width: 15vw;
   background-color: orange;
 }
+
+.app-add-box-wrapper {
+  position: fixed;
+  background-color: orange;
+  width: 60%;
+  height: 80%;
+  top: 10%;
+  left: 20%;
+  
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  transition-duration: 500ms;
+}

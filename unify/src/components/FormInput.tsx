@@ -12,7 +12,11 @@ const FormInput = (props: FormInputProps) => {
     return (
         <div className = "form-input">
             <label htmlFor={name} >{name}</label>
-            <input type = {type} name = {name} onChange={(e: ChangeEvent<HTMLInputElement>) : any => onChange(e.target.value)} /> 
+            <input type = {type} name = {name} onChange={(e: ChangeEvent<HTMLInputElement>) : any => {
+                if (type === "date") return onChange(Date.parse(e.target.value))
+                else return onChange(e.target.value)
+            }
+        } /> 
         </div>
 
     ) 

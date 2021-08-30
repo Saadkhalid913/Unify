@@ -23,8 +23,8 @@ const SignupPage = (props: RouteComponentProps) => {
             
                 const { user_auth_token } = response.data
                 setToken(user_auth_token)
-                console.log("set token ")
                 toast.info("Account created successfuly")
+
                 props.history.push("/")
             }}/>
             </div>
