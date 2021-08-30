@@ -168,3 +168,17 @@
   50%  {opacity:  50%}
   100% {opacity:  100%}
 }
+
+.ec-item , .ec-item-selected {
+  padding: 0.5rem;
+  border-radius: 100px;
+}
+
+.ec-item {
+  background-color: white
+}
+
+.ec-item-selected {
+  background-color: blue
+
+}

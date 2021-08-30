@@ -15,7 +15,6 @@ export default class App extends Component  {
 
 
     render() {
-        console.log(process.env)
        return (
         <tokenContext.Provider value = {{token: this.state.token, setToken : this.setToken}}>
             <BrowserRouter>

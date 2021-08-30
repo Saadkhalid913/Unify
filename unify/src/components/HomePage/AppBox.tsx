@@ -20,7 +20,7 @@ const AppBox = (props: AppBoxProps) => {
     const [applicationOpenDate, setApplicationOpenDate] = useState(0)
     const [applicationCloseDate, setApplicationCloseDate] = useState(0)
     const [expectedResponseDate, setExpectedResponseDate] = useState(0)
-    const [relevantExtracurriculars, setRelevantExtracurriculars] = useState([])
+    const [relevantExtracurriculars, setRelevantExtracurriculars] = useState<Extracurricular[]>([])
     const [includeAllExtraCurriculars, setIncludeAllExtraCurriculars] = useState(1)
     const [notes, setNotes] = useState("")
 
@@ -33,7 +33,26 @@ const AppBox = (props: AppBoxProps) => {
             <FormInput type = "date" name = "Application Close Date" onChange = {setApplicationCloseDate}/>
             <FormInput type = "date" name = "Expected Response Date" onChange = {setExpectedResponseDate}/>
             <FormInput type = "text" name = "Extra Notes" onChange = {setNotes}/>
-            <ExtracurricularChooser exracurriculars = {props.extracurriculars} />
+
+            <ExtracurricularChooser handleUpdate = {(ec: Extracurricular) => {
+                const index = relevantExtracurriculars.indexOf(ec)
+                console.log(index)
+                if (index > -1) {
+                    let oldECs = [...relevantExtracurriculars]
+                    oldECs.splice(index, 1)
+                    setRelevantExtracurriculars(oldECs)
+                }
+
+                else {
+                    let oldECs = [...relevantExtracurriculars]
+                    oldECs.push(ec)
+                    setRelevantExtracurriculars(oldECs)
+                }
+                console.log(relevantExtracurriculars)
+                                                        }} exracurriculars = {props.extracurriculars} />
+
+
+
             <button onClick = {async () => {
                 await props.submitNewApp({
                     uniName, programName,
@@ -44,6 +63,7 @@ const AppBox = (props: AppBoxProps) => {
             }}
             
             className = "appbox-submit">Submit</button>
+            
         </div>
     )
 }

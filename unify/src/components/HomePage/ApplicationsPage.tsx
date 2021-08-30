@@ -15,7 +15,7 @@ export interface Application {
     applicationCloseDate: Number | string;
     expectedResponseDate? : Number | string;
     includeAllExtraCurriculars: number;
-    relevantExtracurriculars: string[];
+    relevantExtracurriculars: Extracurricular[];
     notes: String;
 }
 

@@ -10,6 +10,7 @@ import ExtracurricularViewer from './ExtracurricularViewer'
 
 const ProfilePage = (props: RouteComponentProps) => {
     const { token } = useContext(tokenContext)
+    
     const [noToken, setNoToken] = useState(false)
     const [user, setUser] = useState({})
 
