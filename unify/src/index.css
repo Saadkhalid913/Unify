@@ -180,5 +180,35 @@
 
 .ec-item-selected {
   background-color: blue
+}
 
+.pfp-wrapper {
+  width: 100%;
+  height: 95vh;
+  border: 2px solid blue;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.profile-ec-list{
+  width: 100%;
+  height: 90%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem
+}
+
+.profile-ec-list-item {
+  width: 100%;
+  height: 3.5rem;
+  margin: 0.5rem;
+  background-color: var(--white-tone);
+  box-shadow: 2px 2px 4px 1px white, -2px -2px 4px 1px grey;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
 }

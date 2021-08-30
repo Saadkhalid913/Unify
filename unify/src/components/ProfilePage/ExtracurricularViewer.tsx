@@ -7,11 +7,14 @@ interface ExtracurricularViewerProps {
 
 const ExtracurricularViewer = (props: ExtracurricularViewerProps) => {
     return (
-        <ul className = "profile-ec-list">
-            {props.extracurriculars.map(e => {
-                return <li key = {e._id} > {e.name}</li>
-            })}
-        </ul>
+        <div className = "profile-ec-wrapper">
+            <h3>Your Extracurriculars</h3>
+            <ul className = "profile-ec-list">
+                {props.extracurriculars.map(e => {
+                return <li className = "profile-ec-list-item" key = {e._id} > {e.name}</li>
+                })}
+            </ul>
+        </div>
     )
 }
 

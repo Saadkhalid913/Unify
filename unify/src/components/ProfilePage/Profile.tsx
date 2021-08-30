@@ -1,18 +1,25 @@
 
 import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import tokenContext from '../../contexts/tokenContext'
 import { Extracurricular } from '../HomePage/ApplicationsPage'
 import { Application } from '../HomePage/ApplicationsPage'
+import Navbar from '../Navbar'
 import ExtracurricularViewer from './ExtracurricularViewer'
+
+interface userData {
+    extracurriculars: Extracurricular[];
+    applications: Application[];
+
+}
 
 const ProfilePage = (props: RouteComponentProps) => {
     const { token } = useContext(tokenContext)
     
     const [noToken, setNoToken] = useState(false)
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState<userData>({applications: [], extracurriculars: []})
 
 
     useEffect(() => {
@@ -25,9 +32,17 @@ const ProfilePage = (props: RouteComponentProps) => {
     console.log(user)
     if (noToken) return <Redirect to = "login" />
 
+    if (user.extracurriculars.length == 0) {
+        return <div>No EC's</div>
+    }
+
     return (
-        //@ts-ignore
-        <ExtracurricularViewer extracurriculars = {user.extracurriculars} />
+        <Fragment>
+            <Navbar />
+            <div className="pfp-wrapper">
+                <ExtracurricularViewer extracurriculars = {user.extracurriculars} />
+            </div>
+        </Fragment>
     )
 
 }
