@@ -1,13 +1,16 @@
 import React, {useState} from 'react'
 import { Application } from "./ApplicationsPage"
 import FormInput from "../FormInput"
-
-
+import { Extracurricular } from "./ApplicationsPage"
+import ExtracurricularChooser from "./ExtraCurricularChooser"
 // WIP CSS
+
+
 interface AppBoxProps  {
     getStyles: () => object;
     submitNewApp: (data: Application) => Promise<void>;
     showAppBox: () => void;
+    extracurriculars: Extracurricular[]
 }
 
 const AppBox = (props: AppBoxProps) => {
@@ -30,7 +33,7 @@ const AppBox = (props: AppBoxProps) => {
             <FormInput type = "date" name = "Application Close Date" onChange = {setApplicationCloseDate}/>
             <FormInput type = "date" name = "Expected Response Date" onChange = {setExpectedResponseDate}/>
             <FormInput type = "text" name = "Extra Notes" onChange = {setNotes}/>
-
+            <ExtracurricularChooser exracurriculars = {props.extracurriculars} />
             <button onClick = {async () => {
                 await props.submitNewApp({
                     uniName, programName,

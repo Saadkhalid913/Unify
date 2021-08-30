@@ -14,7 +14,7 @@ const LoginPage = (props: RouteComponentProps) => {
             <Navbar />
         <div className = "login-page-wrapper">
             <LoginForm onSubmit = {async (data: LoginData) : Promise<void> => {
-                const response = await axios.post("http://localhost:3000/users/login",  data)
+                const response = await axios.post(process.env.REACT_APP_root_url + "/users/login",  data)
                 if (response.status !== 200) {
                     toast.warning("There was an error")
                     return 

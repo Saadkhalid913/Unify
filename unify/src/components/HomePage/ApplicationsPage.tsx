@@ -19,6 +19,15 @@ export interface Application {
     notes: String;
 }
 
+export interface Extracurricular {
+    _id: string;
+    name: string,
+    description: string,
+    dateStarted: number;
+    dateEnded?: number;
+    onGoing: boolean;
+}
+
 
 interface ApplicationsPageProps {
     token: string;
@@ -39,10 +48,10 @@ export default class ApplicationsPage extends Component<ApplicationsPageProps> {
 
     async componentDidMount() {
         const { token } = this.props
-        const ApplicationsResponse = await axios.get("http://localhost:3000/applications", {headers: {user_auth_token: token}})
+        const ApplicationsResponse = await axios.get(process.env.REACT_APP_root_url + "/applications", {headers: {user_auth_token: token}})
         this.setState({applications : ApplicationsResponse.data})
 
-        const ECresponse = await axios.get("http://localhost:3000/extracurriculars", {headers: {user_auth_token: token}})
+        const ECresponse = await axios.get(process.env.REACT_APP_root_url + "/extracurriculars", {headers: {user_auth_token: token}})
         this.setState({extracurriculars : ECresponse.data.extracurriculars})
     }
 
@@ -53,7 +62,7 @@ export default class ApplicationsPage extends Component<ApplicationsPageProps> {
                     <Sidebar showAppBox = {this.showAppBox} />
                     <ApplicationList applications = {this.state.applications} />
                 </div>
-                <AppBox showAppBox = {this.showAppBox} submitNewApp = {this.submitNewApp} getStyles={this.getAppBoxStyles} />
+                <AppBox extracurriculars = {this.state.extracurriculars} showAppBox = {this.showAppBox} submitNewApp = {this.submitNewApp} getStyles={this.getAppBoxStyles} />
            </Fragment>
         )
     }
@@ -70,7 +79,7 @@ export default class ApplicationsPage extends Component<ApplicationsPageProps> {
 
     submitNewApp = async (data: Application): Promise<void> => {
         try {
-            const response = await axios.post("http://localhost:3000/applications", data, {headers: {user_auth_token: this.props.token }})
+            const response = await axios.post(process.env.REACT_APP_root_url + "/applications", data, {headers: {user_auth_token: this.props.token }})
             const Application: Application = response.data
             const oldState = [...this.state.applications]
             oldState.push(Application)

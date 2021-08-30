@@ -3,7 +3,6 @@ import { Redirect, RouteComponentProps } from 'react-router-dom'
 import tokenContext from '../../contexts/tokenContext'
 import Navbar from '../Navbar'
 import ApplicationsPage from './ApplicationsPage'
-import userContext from '../../contexts/userContext'
 
 
 const Homepage = (props: RouteComponentProps) => {
