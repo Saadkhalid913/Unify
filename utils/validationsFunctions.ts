@@ -118,7 +118,7 @@ export async function validateApplicationBody(req: any, res: express.Response): 
         return new Promise((resolve, reject) => resolve(true))
     }
     catch(err){
-        res.send(err.details[0].message)
+        res.status(400).send(err.details[0].message)
         return new Promise((resolve, reject) => resolve(false))
     }
 }

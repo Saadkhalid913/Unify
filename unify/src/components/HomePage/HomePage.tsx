@@ -3,7 +3,7 @@ import { Redirect, RouteComponentProps } from 'react-router-dom'
 import tokenContext from '../../contexts/tokenContext'
 import Navbar from '../Navbar'
 import ApplicationsPage from './ApplicationsPage'
-
+import userContext from '../../contexts/userContext'
 
 
 const Homepage = (props: RouteComponentProps) => {
@@ -15,8 +15,8 @@ const Homepage = (props: RouteComponentProps) => {
 
     return (
         <Fragment>
-               <Navbar />
-               <ApplicationsPage token = {token} />
+            <Navbar />
+            <ApplicationsPage token = {token} />
         </Fragment>
     )
 }

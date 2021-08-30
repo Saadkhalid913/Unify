@@ -2,6 +2,10 @@ import axios from 'axios'
 import React, { Component, Fragment } from 'react'
 import Sidebar from './Sidebar'
 import AppBox from './AppBox'
+import ApplicationList from './ApplicationList'
+import { toast } from 'react-toastify'
+
+toast.configure()
 
 export interface Application {
     _id?: string;
@@ -10,7 +14,7 @@ export interface Application {
     applicationOpenDate: Number | string;
     applicationCloseDate: Number | string;
     expectedResponseDate? : Number | string;
-    includeAllExtraCurriculars: Boolean;
+    includeAllExtraCurriculars: number;
     relevantExtracurriculars: string[];
     notes: String;
 }
@@ -22,32 +26,39 @@ interface ApplicationsPageProps {
 
 interface ApplicationPageState {
     applications: Application[];
+    extracurriculars: any[];
     showingAppBox: Boolean;
 }
 
 export default class ApplicationsPage extends Component<ApplicationsPageProps> {
     state : ApplicationPageState = {
         applications: [],
+        extracurriculars: [],
         showingAppBox: false
     }
 
     async componentDidMount() {
-        const { token }= this.props
-        const response = await axios.get("http://localhost:3000/applications", {headers: {user_auth_token: token}})
-        this.setState({applications : response.data})
+        const { token } = this.props
+        const ApplicationsResponse = await axios.get("http://localhost:3000/applications", {headers: {user_auth_token: token}})
+        this.setState({applications : ApplicationsResponse.data})
+
+        const ECresponse = await axios.get("http://localhost:3000/extracurriculars", {headers: {user_auth_token: token}})
+        this.setState({extracurriculars : ECresponse.data.extracurriculars})
     }
 
     render() {
         return (
            <Fragment>
-                <Sidebar showAppBox = {this.showAppBox} />
-                <AppBox submitNewApp = {this.submitNewApp} getStyles={this.getAppBoxStyles} />
+                <div className = "applications-page">
+                    <Sidebar showAppBox = {this.showAppBox} />
+                    <ApplicationList applications = {this.state.applications} />
+                </div>
+                <AppBox showAppBox = {this.showAppBox} submitNewApp = {this.submitNewApp} getStyles={this.getAppBoxStyles} />
            </Fragment>
         )
     }
     showAppBox = () => {
         this.setState({showingAppBox: !this.state.showingAppBox})
-        console.log(this.state.showingAppBox)
     }
 
     getAppBoxStyles = () => {
@@ -57,8 +68,17 @@ export default class ApplicationsPage extends Component<ApplicationsPageProps> {
         else return {display: "none", opacity: "0%"}
     }
 
-    submitNewApp = (data: Application) :Promise<void> => {
-        console.log(data)
-        return new Promise((resolve, reject) => resolve(undefined))
-    }
+    submitNewApp = async (data: Application): Promise<void> => {
+        try {
+            const response = await axios.post("http://localhost:3000/applications", data, {headers: {user_auth_token: this.props.token }})
+            const Application: Application = response.data
+            const oldState = [...this.state.applications]
+            oldState.push(Application)
+            this.setState({applications: oldState})
+        }
+        catch (err: any) {
+            toast.error(err.response.data)
+        }
+        this.showAppBox()
+    }   
 }

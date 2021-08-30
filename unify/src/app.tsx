@@ -4,7 +4,7 @@ import Homepage from './components/HomePage/HomePage'
 import LoginPage from './components/LoginPage/LoginPage'
 import SignupPage from './components/SignupPage/SignupPage'
 import tokenContext from "./contexts/tokenContext"
-
+import 'react-toastify/dist/ReactToastify.css';
 
 export default class App extends Component  {
     state = {
