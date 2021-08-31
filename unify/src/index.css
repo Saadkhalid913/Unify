@@ -201,19 +201,16 @@
   box-shadow: -1px -1px 4px 1px white,  1px 1px 4px 1px grey;
 } 
 
-.application-list-item > div {
+.application-list-item > span {
   border: 1px solid black;
   height: 100%;
   align-items: center;
   justify-content: center;
   display: flex;
+  width: 100%;
   padding: 1rem;
   overflow-wrap: break-word;
-  white-space: pre-wrap;      /* CSS3 */   
-  white-space: -moz-pre-wrap; /* Firefox */    
-  white-space: -pre-wrap;     /* Opera <7 */   
-  white-space: -o-pre-wrap;   /* Opera 7 */  
-  word-wrap: break-word;
+
 }
 
 @keyframes FadeIn {
@@ -315,4 +312,18 @@
   display: flex;
   flex-direction: column;
   display: none;
+}
+
+.app-view-wrapper-onscreen {
+  animation: FadeIn 250ms;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 10%;
+  width: min(1366px, 90%);
+  height: 80%;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: var(--white-tone);
+  box-shadow: 0 0 32px 8px black;
 }

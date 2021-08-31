@@ -4,6 +4,7 @@ import Sidebar from './Sidebar'
 import AppBox from './AppBox'
 import ApplicationList from './ApplicationList'
 import { toast } from 'react-toastify'
+import ApplicationViewer from './ApplicationViewer'
 
 toast.configure()
 
@@ -36,14 +37,18 @@ interface ApplicationsPageProps {
 interface ApplicationPageState {
     applications: Application[];
     extracurriculars: any[];
-    showingAppBox: Boolean;
+    showingAppBox: boolean;
+    showingAppView: boolean;
+    selectedApp: Application | undefined
 }
 
 export default class ApplicationsPage extends Component<ApplicationsPageProps> {
     state : ApplicationPageState = {
         applications: [],
         extracurriculars: [],
-        showingAppBox: false
+        showingAppBox: false,
+        showingAppView: false,
+        selectedApp: undefined
     }
 
     async componentDidMount() {
@@ -60,12 +65,18 @@ export default class ApplicationsPage extends Component<ApplicationsPageProps> {
            <Fragment>
                 <div className = "applications-page">
                     <Sidebar showAppBox = {this.showAppBox} />
-                    <ApplicationList applications = {this.state.applications} />
+                    <ApplicationList onSelect = {this.toggleAppView} applications = {this.state.applications} />
                 </div>
+                <ApplicationViewer app={this.state.selectedApp} onDelete = {this.deleteApp} onScreen = {this.state.showingAppView}/>
                 <AppBox extracurriculars = {this.state.extracurriculars} showAppBox = {this.showAppBox} submitNewApp = {this.submitNewApp} getStyles={this.getAppBoxStyles} />
            </Fragment>
         )
     }
+
+    deleteApp = (app: Application) => {
+        console.log(app)
+    }
+
     showAppBox = () => {
         this.setState({showingAppBox: !this.state.showingAppBox})
     }
@@ -75,6 +86,10 @@ export default class ApplicationsPage extends Component<ApplicationsPageProps> {
             return {display: "flex", opacity: "100%"}
         }
         else return {display: "none", opacity: "0%"}
+    }
+
+    toggleAppView = (app: Application) => {
+        this.setState({showingAppView: !this.state.showingAppView, selectedApp: app})
     }
 
     submitNewApp = async (data: Application): Promise<void> => {

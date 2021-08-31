@@ -1,11 +1,10 @@
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import React, { Fragment, useContext, useEffect, useState } from 'react'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import tokenContext from '../../contexts/tokenContext'
 import { Extracurricular } from '../HomePage/ApplicationsPage'
 import { Application } from '../HomePage/ApplicationsPage'
-import Sidebar from '../HomePage/Sidebar'
 import Navbar from '../Navbar'
 import ECBox from './ECBox'
 import ExtracurricularViewer from './ExtracurricularViewer'
@@ -31,7 +30,7 @@ const ProfilePage = (props: RouteComponentProps) => {
 
     if (noToken) return <Redirect to = "login" />
 
-    if (user.extracurriculars.length == 0) {
+    if (user.extracurriculars.length === 0) {
         return <div>No EC's</div>
     }
 
