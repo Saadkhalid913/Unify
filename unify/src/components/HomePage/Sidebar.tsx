@@ -10,9 +10,6 @@ const Sidebar = (props: SidebarProps) => {
             <button onClick = {props.showAppBox}>Add Application</button>
             <ul className="sidebar-list">
                 <Link to = "me">My Profile</Link>
-                <li>Blah</li>
-                <li>Blah</li>
-                <li>Blah</li>
             </ul>
         </div>
     )

@@ -11,9 +11,9 @@ export interface Application {
     _id?: string;
     uniName: String;
     programName: String;
-    applicationOpenDate: Number | string;
-    applicationCloseDate: Number | string;
-    expectedResponseDate? : Number | string;
+    applicationOpenDate: string | number;
+    applicationCloseDate:  string | number ;
+    expectedResponseDate? : string | number ;
     includeAllExtraCurriculars: number;
     relevantExtracurriculars: Extracurricular[];
     notes: String;

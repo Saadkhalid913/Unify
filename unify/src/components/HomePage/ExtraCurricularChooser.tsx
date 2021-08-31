@@ -9,7 +9,7 @@ interface ECchooserProps {
 
 const ExtracurricularChooser = (props: ECchooserProps) => {
     return (
-        <div>
+        <div className = "ec-chooser-wrapper">
             {props.exracurriculars.map(ec => {
                                         return <div 
                                         className = "ec-item" 

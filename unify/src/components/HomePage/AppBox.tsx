@@ -56,7 +56,7 @@ const AppBox = (props: AppBoxProps) => {
                     uniName, programName,
                     applicationCloseDate, applicationOpenDate, 
                     expectedResponseDate, relevantExtracurriculars, 
-                    includeAllExtraCurriculars: 1, notes
+                    includeAllExtraCurriculars: 0, notes
                 })
             }}
             
