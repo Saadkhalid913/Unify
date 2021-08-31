@@ -20,12 +20,12 @@ export interface Application {
 }
 
 export interface Extracurricular {
-    _id: string;
+    _id?: string;
     name: string,
     description: string,
-    dateStarted: number;
+    dateStarted: number | string;
     dateEnded?: number;
-    onGoing: boolean;
+    onGoing?: boolean;
 }
 
 

@@ -5,10 +5,11 @@ export interface FormInputProps {
     name: string;
     type: string;
     onChange: Function
+    defaultValue? : string | number 
 }
 
 const FormInput = (props: FormInputProps) => {
-    const {name, type, onChange} = props
+    let {name, type, onChange} = props
     return (
         <div className = "form-input">
             <label htmlFor={name} >{name}</label>
@@ -21,5 +22,6 @@ const FormInput = (props: FormInputProps) => {
 
     ) 
 }
+
 
 export default FormInput

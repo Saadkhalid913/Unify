@@ -21,7 +21,7 @@ const AppBox = (props: AppBoxProps) => {
     const [applicationCloseDate, setApplicationCloseDate] = useState(0)
     const [expectedResponseDate, setExpectedResponseDate] = useState(0)
     const [relevantExtracurriculars, setRelevantExtracurriculars] = useState<Extracurricular[]>([])
-    const [includeAllExtraCurriculars, setIncludeAllExtraCurriculars] = useState(1)
+
     const [notes, setNotes] = useState("")
 
     return (
@@ -36,7 +36,6 @@ const AppBox = (props: AppBoxProps) => {
 
             <ExtracurricularChooser handleUpdate = {(ec: Extracurricular) => {
                 const index = relevantExtracurriculars.indexOf(ec)
-                console.log(index)
                 if (index > -1) {
                     let oldECs = [...relevantExtracurriculars]
                     oldECs.splice(index, 1)
@@ -48,7 +47,6 @@ const AppBox = (props: AppBoxProps) => {
                     oldECs.push(ec)
                     setRelevantExtracurriculars(oldECs)
                 }
-                console.log(relevantExtracurriculars)
                                                         }} exracurriculars = {props.extracurriculars} />
 
 
@@ -58,7 +56,7 @@ const AppBox = (props: AppBoxProps) => {
                     uniName, programName,
                     applicationCloseDate, applicationOpenDate, 
                     expectedResponseDate, relevantExtracurriculars, 
-                    includeAllExtraCurriculars, notes
+                    includeAllExtraCurriculars: 1, notes
                 })
             }}
             
