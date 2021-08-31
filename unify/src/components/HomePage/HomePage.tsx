@@ -1,23 +1,21 @@
-import React, { Fragment, useContext } from 'react'
+import React, {useContext, Fragment} from 'react'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import tokenContext from '../../contexts/tokenContext'
-import Navbar from '../Navbar'
-import ApplicationsPage from './ApplicationsPage'
-
+import ApplicationManager from './ApplicationManager'
+import ECmanager from './ECmanager'
 
 const Homepage = (props: RouteComponentProps) => {
-    const { token } = useContext(tokenContext)
 
-    if (!token) {
-        return <Redirect to = "/login" />
-    }
-
+    const {token} = useContext(tokenContext)
+    if (!token) return <Redirect to="/login"/>
     return (
-        <Fragment>
-            <Navbar />
-            <ApplicationsPage token = {token} />
-        </Fragment>
-    )
+            <Fragment>
+                <ECmanager token = {token}/>
+                <ApplicationManager token = {token} nextPage = {props.history.push} />
+            </Fragment>
+        ) 
+        
+
 }
 
 

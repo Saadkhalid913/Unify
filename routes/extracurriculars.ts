@@ -22,7 +22,7 @@ extracurricularRouter.post("/", auth, async (req: any, res: express.Response) =>
 extracurricularRouter.get("/", auth, async (req: any, res: express.Response) => {
     const userID = req._user._id
     const extracurriculars = await userModel.findById(userID).select("extracurriculars").populate("extracurriculars")
-    res.send(extracurriculars)
+    res.send(extracurriculars["extracurriculars"])
 })
 
 extracurricularRouter.get("/:id", auth, async (req: any, res: express.Response) => {

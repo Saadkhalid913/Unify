@@ -61,7 +61,7 @@ applicationRouter.put("/:id", auth, async (req: any, res: express.Response) => {
 
     try {
         const response = await applicationModel.findByIdAndUpdate(applicationID, req.body)
-        res.send(response)
+        res.send(await applicationModel.findById(response._id))
     }
 
     catch(err) {
@@ -69,16 +69,28 @@ applicationRouter.put("/:id", auth, async (req: any, res: express.Response) => {
     }
 })
 
+
+applicationRouter.delete("/:id", auth, async (req: any, res: express.Response) => {
+    const applicationID = req.params.id
+    const response = await applicationModel.findByIdAndDelete(applicationID)
+    res.send(response)
+})
+
+
+
 applicationRouter.get("/:id", auth, async (req: any, res: express.Response) => {
     const applicationID = req.params.id
     const userID = req._user._id
     
-    const userApplicationInfo = await userModel.findById(userID).select("applications").populate("applications")
+    const userApplicationInfo = await userModel.findById(userID).select("applications")
     const userApplications : Application[] = userApplicationInfo["applications"] // we take the application array out of the response object 
     const applicationIndex = userApplications.findIndex((x : Application) => x._id.toString() === applicationID)
 
     if (applicationIndex < 0) return res.status(401).send("Application not found")
-    return res.send(userApplications[applicationIndex])
+
+    const Application = await applicationModel.findById(applicationID).populate({path: "relevantExtracurriculars", select:["name", "description"]})
+    console.log(Application)
+    return res.send(Application)
 })
 
 applicationRouter.get("/", auth, async (req: any, res: express.Response) => {
