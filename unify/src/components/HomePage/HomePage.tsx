@@ -9,10 +9,12 @@ const Homepage = (props: RouteComponentProps) => {
     const {token} = useContext(tokenContext)
     if (!token) return <Redirect to="/login"/>
     return (
-            <Fragment>
-                <ECmanager token = {token}/>
-                <ApplicationManager token = {token} nextPage = {props.history.push} />
-            </Fragment>
+            <div className = "homepage-wrapper">
+                <div className = "homepage">
+                    <ApplicationManager token = {token} nextPage = {props.history.push} />
+                    <ECmanager token = {token} nextPage = {props.history.push}/>
+                </div>
+            </div>
         ) 
         
 

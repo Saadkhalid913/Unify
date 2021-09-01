@@ -26,7 +26,7 @@ export default class ApplicationManager extends Component<ApplicationManagerProp
 
 
     render() {
-        return (<div className = "ec-box-wrapper"> 
+        return (<div className = "app-box-wrapper"> 
                       {this.state.apps.map(app => <AppViewItem onClick = {() => {this.props.nextPage("/applications/" + app._id)}} app = {app}/>)}  
                 </div>)
     }

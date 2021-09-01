@@ -6,6 +6,7 @@ import tokenContext from "./contexts/tokenContext"
 import Homepage from './components/Homepage/Homepage'
 import ApplicationPage from './components/ApplicationPage/ApplicationPage'
 import 'react-toastify/dist/ReactToastify.css';
+import ECpage from './components/ECpage/ECpage'
 
 export default class App extends Component  {
     state = {
@@ -21,6 +22,7 @@ export default class App extends Component  {
             <Switch>
                 
                 <Route path = "/applications/:id" render = {(props) => <ApplicationPage {...props} />} />
+                <Route path = "/extracurriculars/:id" render = {(props) => <ECpage {...props} />} />
                 <Route path = "/login" render = {(props) => <LoginPage {...props} />} />
                 <Route path = "/signup" render = {(props) => <SignupPage {...props} />} />
                 <Route path = "/" render = {(props) => <Homepage {...props} />} />

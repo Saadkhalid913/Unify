@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useContext , useState , useEffect} from 'react'
 
-import { RouteComponentProps } from 'react-router-dom'
+import { Redirect, RouteComponentProps } from 'react-router-dom'
 import tokenContext from '../../contexts/tokenContext'
 import { Application } from '../@types'
 
@@ -13,12 +13,14 @@ const ApplicationPage = (props: RouteComponentProps) => {
     const { token } = useContext(tokenContext)
 
     const [App, setApp] = useState<Application>()
-
     useEffect(() => {
         getAppData(token, AppID).then(data => setApp(data))
     }, [setApp, token, AppID])
 
     console.log(App)
+
+
+    if (!token) return <Redirect to ="/login" />
     if (!App) return <div>No App Found</div>
     else return <div>App Found!</div>
 }

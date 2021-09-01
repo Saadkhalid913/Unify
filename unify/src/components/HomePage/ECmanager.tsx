@@ -2,13 +2,14 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import { toast } from 'react-toastify'
 import { Extracurricular } from '../@types'
-
+import ECview from './ECview'
 
 
 const ROOT_URL = process.env.REACT_APP_root_url
 
 interface ECmanagerProps {
-    token: string
+    token: string;
+    nextPage: (path: string) => void;
 }
 
 interface ECmanagerState {
@@ -26,7 +27,7 @@ export default class ECmanager extends Component<ECmanagerProps> {
 
     render() {
         return (<div className = "ec-box-wrapper"> 
-                      {this.state.ECs.map(ec => <p>{ec.name}</p>)}  
+                      {this.state.ECs.map(ec => <ECview onClick = {this.props.nextPage} EC = {ec}/>)}  
                 </div>)
     }
 
