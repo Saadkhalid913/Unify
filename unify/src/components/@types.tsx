@@ -18,3 +18,13 @@ export interface Application {
     notes: string
 }
 
+export interface ApplicationSubmission {
+    uniName: string,
+    programName: string,
+    applicationOpenDate: number,
+    applicationCloseDate: number,
+    expectedResponseDate?: number,
+    relevantExtracurriculars: Extracurricular[],
+    notes: string
+}
+

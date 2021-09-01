@@ -1,6 +1,7 @@
-import { Application, Extracurricular } from "../@types"
+import { Application, ApplicationSubmission, Extracurricular } from "../@types"
 import React , {useState} from 'react'
 import * as joi from "joi"
+import { toast } from "react-toastify"
 
 interface AppCreateFormProps {
     onSubmit: (app: Application) => void
@@ -10,7 +11,7 @@ const AppCreateForm = (props: AppCreateFormProps) => {
     const [programName, setProgramName] = useState("")
     const [applicationOpenDate, setApplicationOpenDate] = useState(0)
     const [applicationCloseDate, setApplicationCloseDate] = useState(0)
-    const [ExpectedResponseDate, setExpectedResponseDate] = useState(0)
+    const [expectedResponseDate, setExpectedResponseDate] = useState(0)
     const [relevantExtracurriculars, setRelevantExtracurriculars] = useState<Extracurricular[]>([])
     const [notes, setNotes] = useState("")
     
@@ -45,9 +46,69 @@ const AppCreateForm = (props: AppCreateFormProps) => {
                         <input name = "notes" onChange = {(e) => {setNotes(e.target.value)}} defaultValue = {notes} />
                 </div>
             </div>
+            <button onClick = { async () => {
+                const app: ApplicationSubmission = {uniName, programName, applicationOpenDate, applicationCloseDate, expectedResponseDate, notes, relevantExtracurriculars}
+                console.log(app)
+                const isValid = await ValidateApplication(app)
+                if (isValid) return toast.info("Valid Application!")
+                else return 
+            }}>
+                
+                Submit
+            </button>
         </div>
     )
 }
 
+
+async function ValidateApplication(app: Object): Promise<boolean>  {
+    const schema = joi.object({
+        uniName: joi.string()
+            .min(6)
+            .max(255)
+            .required()
+            .messages({
+                "string.min": "University name must be at least 6 characters"
+            }),
+        
+        programName: joi.string()
+                        .min(6)
+                        .max(255)
+                        .required(),
+        
+        applicationOpenDate: joi.date()
+                                .min(1)
+                                .options({convert: true})
+                                .required()
+                                .messages({"date.min": "Please Enter a valid application open date"}),
+
+        applicationCloseDate: joi.date()
+                                .min(6)                                
+                                .options({convert: true})
+                                .required()
+                                .messages({"date.min": "Please Enter a valid application close date"}),
+
+        expectedResponseDate : joi.date()
+                                .min(6)
+                                .options({convert: true})
+                                .messages({"date.min": "Please Enter a valid response date"}),
+                                
+
+        relevantExtracurriculars: joi.array(),
+
+        notes: joi.string().min(1).max(4096),
+
+        includeAllExtraCurriculars: joi.number()
+    })
+
+    try {
+        await schema.validateAsync(app)
+        return true
+    }
+    catch(err: any) {
+        toast.error(err.details[0].message)
+        return false 
+    }
+}
 
 export default AppCreateForm

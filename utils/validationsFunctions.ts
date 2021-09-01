@@ -97,14 +97,17 @@ export async function validateApplicationBody(req: any, res: express.Response): 
                         .required(),
         
         applicationOpenDate: joi.date()
+                                .min(1)
                                 .options({convert: true})
                                 .required(),
 
         applicationCloseDate: joi.date()
+                                .min(1)
                                 .options({convert: true})
                                 .required(),
 
         expectedResponseDate : joi.date()
+                                .min(1)
                                 .options({convert: true}),
 
         relevantExtracurriculars: joi.array(),
