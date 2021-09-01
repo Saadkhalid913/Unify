@@ -28,9 +28,13 @@ const ApplicationPage = (props: RouteComponentProps) => {
                     <h2>{App.uniName}</h2>
                     <h4>{App.programName}</h4>
                 </div>
-                <div className = "app-page-ecs">
-                    {App.relevantExtracurriculars.map(ec => <div key = {ec._id} onClick = {() => {props.history.push("/extracurriculars/" + ec._id)}}>{ec.name}</div>)}
+                <div className = "app-page-ec-wrapper">
+                    <h4>Relevant Extracurriculars</h4>
+                    <div className = "app-page-ecs">
+                        {App.relevantExtracurriculars.map(ec => <div key = {ec._id} onClick = {() => {props.history.push("/extracurriculars/" + ec._id)}}>{ec.name}</div>)}
+                    </div>
                 </div>
+                <div className = "app-page-notes">{App.notes}</div>
             </div>
         </div>
     )

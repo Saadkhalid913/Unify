@@ -1,15 +1,15 @@
 
-import React, { useState } from 'react'
+import React from 'react'
 import { Extracurricular} from "../@types"
 
-interface ECchooser {
+interface ECchooserProps {
     ECs: Extracurricular[]
     chosenECs: Extracurricular[]
     onUpdate: (ECs: Extracurricular[]) => void 
 }
 
 
-const ECchooser = (props: ECchooser) => {
+const ECchooser = (props: ECchooserProps) => {
     const { chosenECs, onUpdate } = props
     if (!props.ECs) return <div></div>
     return <div>

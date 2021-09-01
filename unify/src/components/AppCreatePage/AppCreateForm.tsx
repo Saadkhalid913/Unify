@@ -5,7 +5,7 @@ import ECchooser from "./ECchooser"
 import { toast } from "react-toastify"
 
 interface AppCreateFormProps {
-    onSubmit: (app: Application) => void
+    onSubmit: (app: ApplicationSubmission) => void
     ECs: Extracurricular[];
 }
 const AppCreateForm = (props: AppCreateFormProps) => {
@@ -56,7 +56,7 @@ const AppCreateForm = (props: AppCreateFormProps) => {
             <button onClick = { async () => {
                 const app: ApplicationSubmission = {uniName, programName, applicationOpenDate, applicationCloseDate, expectedResponseDate, notes, relevantExtracurriculars}
                 const isValid = await ValidateApplication(app)
-                if (isValid) return toast.info("Valid Application!")
+                if (isValid) return props.onSubmit(app)
                 else return 
             }}>
                 

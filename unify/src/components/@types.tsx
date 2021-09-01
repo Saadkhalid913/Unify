@@ -4,7 +4,7 @@ export interface Extracurricular {
     description: string,
     dateStarted: string,
     dateEnded?: string,
-    onGoing: boolean
+    onGoing: boolean,
 }
 
 export interface Application {
@@ -15,7 +15,7 @@ export interface Application {
     applicationCloseDate: string,
     ExpectedResponseDate?: string,
     relevantExtracurriculars: Extracurricular[],
-    notes: string
+    notes: string,
 }
 
 export interface ApplicationSubmission {
