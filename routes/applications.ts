@@ -89,7 +89,6 @@ applicationRouter.get("/:id", auth, async (req: any, res: express.Response) => {
     if (applicationIndex < 0) return res.status(401).send("Application not found")
 
     const Application = await applicationModel.findById(applicationID).populate({path: "relevantExtracurriculars", select:["name", "description"]})
-    console.log(Application)
     return res.send(Application)
 })
 
