@@ -17,12 +17,23 @@ const ApplicationPage = (props: RouteComponentProps) => {
         getAppData(token, AppID).then(data => setApp(data))
     }, [setApp, token, AppID])
 
-    console.log(App)
 
 
     if (!token) return <Redirect to ="/login" />
     if (!App) return <div>No App Found</div>
-    else return <div>App Found!</div>
+    else return (
+        <div className= "app-page-wrapper">
+            <div className = "app-page">
+                <div className = "app-page-heading-wrapper">
+                    <h2>{App.uniName}</h2>
+                    <h4>{App.programName}</h4>
+                </div>
+                <div className = "app-page-ecs">
+                    {App.relevantExtracurriculars.map(ec => <div key = {ec._id} onClick = {() => {props.history.push("/extracurriculars/" + ec._id)}}>{ec.name}</div>)}
+                </div>
+            </div>
+        </div>
+    )
 }
 
 

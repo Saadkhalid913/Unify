@@ -1,4 +1,4 @@
-import React, {useContext, Fragment} from 'react'
+import React, {useContext} from 'react'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import tokenContext from '../../contexts/tokenContext'
 import ApplicationManager from './ApplicationManager'

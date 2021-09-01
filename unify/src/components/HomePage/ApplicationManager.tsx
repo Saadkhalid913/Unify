@@ -27,7 +27,12 @@ export default class ApplicationManager extends Component<ApplicationManagerProp
 
     render() {
         return (<div className = "app-box-wrapper"> 
-                      {this.state.apps.map(app => <AppViewItem onClick = {() => {this.props.nextPage("/applications/" + app._id)}} app = {app}/>)}  
+                       <div className ="app-box-title">
+                           <span>Univercity Name</span> 
+                           <span>Program Name</span> 
+                        </div> 
+                      {this.state.apps.map(app => <AppViewItem key ={app._id} onClick = {() => {this.props.nextPage("/applications/" + app._id)}} app = {app}/>)}  
+                      <button className = "app-add-button" onClick = {() => this.props.nextPage("/applications/add")}>Create New</button>
                 </div>)
     }
 

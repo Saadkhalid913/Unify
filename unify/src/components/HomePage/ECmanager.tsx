@@ -27,7 +27,7 @@ export default class ECmanager extends Component<ECmanagerProps> {
 
     render() {
         return (<div className = "ec-box-wrapper"> 
-                      {this.state.ECs.map(ec => <ECview onClick = {this.props.nextPage} EC = {ec}/>)}  
+                      {this.state.ECs.map(ec => <ECview key={ec._id} onClick = {this.props.nextPage} EC = {ec}/>)}  
                 </div>)
     }
 
