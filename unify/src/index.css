@@ -246,3 +246,10 @@
 .ec-view-item {
 
 }
+
+.ec-chooser-item-selected { 
+  color: blue
+}
+.ec-chooser-item {
+  color: green
+}

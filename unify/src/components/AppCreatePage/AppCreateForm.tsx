@@ -1,10 +1,12 @@
 import { Application, ApplicationSubmission, Extracurricular } from "../@types"
 import React , {useState} from 'react'
 import * as joi from "joi"
+import ECchooser from "./ECchooser"
 import { toast } from "react-toastify"
 
 interface AppCreateFormProps {
     onSubmit: (app: Application) => void
+    ECs: Extracurricular[];
 }
 const AppCreateForm = (props: AppCreateFormProps) => {
     const [uniName, setUniName] = useState("")
@@ -14,6 +16,8 @@ const AppCreateForm = (props: AppCreateFormProps) => {
     const [expectedResponseDate, setExpectedResponseDate] = useState(0)
     const [relevantExtracurriculars, setRelevantExtracurriculars] = useState<Extracurricular[]>([])
     const [notes, setNotes] = useState("")
+
+    console.log(relevantExtracurriculars)
     
 
     return (
@@ -45,10 +49,12 @@ const AppCreateForm = (props: AppCreateFormProps) => {
                         <label htmlFor = "notes">Extra Notes</label>
                         <input name = "notes" onChange = {(e) => {setNotes(e.target.value)}} defaultValue = {notes} />
                 </div>
+                <div className = "app-add-input-item">
+                    <ECchooser ECs = {props.ECs} chosenECs = {relevantExtracurriculars} onUpdate = {setRelevantExtracurriculars} />
+                </div>
             </div>
             <button onClick = { async () => {
                 const app: ApplicationSubmission = {uniName, programName, applicationOpenDate, applicationCloseDate, expectedResponseDate, notes, relevantExtracurriculars}
-                console.log(app)
                 const isValid = await ValidateApplication(app)
                 if (isValid) return toast.info("Valid Application!")
                 else return 
