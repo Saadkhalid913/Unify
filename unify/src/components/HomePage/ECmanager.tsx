@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { toast } from 'react-toastify'
 import { Extracurricular } from '../@types'
 import ECview from './ECview'
-
+import {AiOutlinePlusCircle} from "react-icons/ai"
 
 const ROOT_URL = process.env.REACT_APP_root_url
 
@@ -29,6 +29,7 @@ export default class ECmanager extends Component<ECmanagerProps> {
         return (<div className = "ec-box-wrapper"> 
                       <h2>Your Extracurriculars</h2>
                       {this.state.ECs.map(ec => <ECview key={ec._id} onClick = {this.props.nextPage} EC = {ec}/>)}  
+                      <button className = "ec-add-button" onClick = {() => this.props.nextPage("/extracurriculars/add")}>Add Extracurriculars<AiOutlinePlusCircle/></button>
                 </div>)
     }
 

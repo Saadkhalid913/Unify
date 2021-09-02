@@ -28,3 +28,11 @@ export interface ApplicationSubmission {
     notes: string
 }
 
+
+export interface ExtracurricularSubmission {
+    name: string,
+    description: string,
+    dateStarted: number,
+    dateEnded?: number,
+    onGoing: boolean,
+}

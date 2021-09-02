@@ -44,7 +44,7 @@ const ApplicationPage = (props: RouteComponentProps) => {
 
 async function deleteApplication(App: Application, token: string, redirect: Function) {
     try {
-        const response = await axios.delete(ROOT_URL + "/applications/" + App._id, {headers: {user_auth_token: token}})
+        await axios.delete(ROOT_URL + "/applications/" + App._id, {headers: {user_auth_token: token}})
         redirect("/")
     }
     catch(err){

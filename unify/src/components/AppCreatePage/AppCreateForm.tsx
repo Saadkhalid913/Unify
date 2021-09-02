@@ -1,4 +1,4 @@
-import { Application, ApplicationSubmission, Extracurricular } from "../@types"
+import { ApplicationSubmission, Extracurricular } from "../@types"
 import React , {useState} from 'react'
 import * as joi from "joi"
 import ECchooser from "./ECchooser"

@@ -19,7 +19,15 @@ const ECpage = (props: RouteComponentProps) => {
 
     if (!token) return <Redirect to ="/login" />
     if (!EC) return <div>No EC Found</div>
-    else return <div>EC Found!</div>
+    else return (
+        <div className = "ec-page-wrapper">
+            <div className = "ec-heading-wrapper">
+                <h2>{EC.name}</h2>
+                <p>{EC.description}</p>
+            </div>
+
+        </div>
+    )
 }
 
 
