@@ -320,13 +320,6 @@
   align-items: center;
 }
 
-.ec-chooser-item-selected { 
-  color: blue
-}
-.ec-chooser-item {
-  color: green
-}
-
 
 .app-page-wrapper { 
   width: 100vw;
@@ -437,6 +430,119 @@
   opacity: 80%;
 }
 .ec-add-button:active {
+  box-shadow: inset 2px 2px 8px 1px grey, inset -2px -2px 8px 1px white;
+  transform: scale(0.9, 0.9)
+}
+
+.app-add-form-wrapper {
+  width: 100vw;
+  height: 100vh;
+  padding: 2%;
+}
+
+.app-add-form {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 16px 2px grey;
+  padding: 1.5rem; 
+  display:flex;
+  flex-direction: column;
+}
+
+.app-add-input-item {
+  display:flex;
+  flex-direction: column;
+}
+
+.app-add-input-item > input {
+  width: 35%;
+}
+
+.app-add-input-item > label {
+  font-size: 1.5rem;
+}
+
+.app-add-input-item > textarea {
+  height: 10rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  
+}
+
+.app-add-input-item > input {
+  margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
+  height: 2rem;
+  border-radius: 4px;
+  padding: 0.5rem;
+
+}
+
+.app-add-input-item > input[type="date"]{
+  padding: 1rem;
+  width: 10%;
+  border-radius: 4px;
+  border: none;
+  background-color: rgb(27, 117, 253);
+  color: white;
+  outline: none;
+  cursor: pointer;
+  transition-duration: 200ms;
+}
+
+.app-add-input-item > input[type="date"]::-webkit-calendar-picker-indicator {
+  transform: scale(1.5,1.5);
+}
+
+.app-add-ec-chooser{
+  padding: 1%;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.ec-chooser-item {
+  cursor: pointer;
+  border-radius: 100px;
+  padding: 0.5rem;
+  display:flex;
+  box-shadow: 2px 2px 5px 1px grey, -2px -2px 4px 1px white;
+}
+
+.ec-chooser-item-selected {
+  cursor: pointer;
+  display:flex;
+  border-radius: 100px;
+  padding: 0.5rem;
+  box-shadow: inset 2px 2px 2px 1px grey, inset -2px -2px 2px 1px white;
+}
+
+.app-submit {
+  transition-duration: 250ms;
+  border-radius: 100px;
+  padding: 0.75rem;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 16px 2px grey;
+  margin: 1.5rem;
+  align-items: center;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1rem;
+  align-self: center;
+  width: 10%;
+
+}
+
+
+.app-submit:hover {
+  opacity: 80%;
+}
+
+.app-submit:active {
   box-shadow: inset 2px 2px 8px 1px grey, inset -2px -2px 8px 1px white;
   transform: scale(0.9, 0.9)
 }

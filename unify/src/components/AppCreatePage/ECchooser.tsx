@@ -12,7 +12,11 @@ interface ECchooserProps {
 const ECchooser = (props: ECchooserProps) => {
     const { chosenECs, onUpdate } = props
     if (!props.ECs) return <div></div>
-    return <div>
+
+
+    return <div className = "ex-chooser-wrapper">
+        <h3>Select relevant extracurriculars</h3>
+        <div className = "app-add-ec-chooser">
         {props.ECs.map(ec => <div
             key = {ec._id} 
             className = "ec-chooser-item"
@@ -33,6 +37,7 @@ const ECchooser = (props: ECchooserProps) => {
 
             }
         }}>{ec.name}</div>)}
+    </div>
     </div>
 
 }

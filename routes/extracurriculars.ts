@@ -3,6 +3,7 @@ import { extracurricularModel, userModel } from "../models/models"
 import { validateExtracurricularBody } from "../utils/validationsFunctions"
 import {auth} from "../middlewear/auth"
 import mongoose from "mongoose"
+import extracurricularSchema from "../models/extracurricularSchema"
 
 
 const extracurricularRouter = express.Router()
@@ -38,7 +39,10 @@ extracurricularRouter.get("/:id", auth, async (req: any, res: express.Response) 
     return res.send(extracurricular)
 })
 
-
+extracurricularRouter.delete("/:id", auth, async (req: any,res: express.Response) => {
+    const response = await extracurricularModel.findByIdAndDelete(req.params.id)
+    res.send(response)
+})
 
 
 

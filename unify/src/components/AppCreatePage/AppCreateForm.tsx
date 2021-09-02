@@ -46,13 +46,12 @@ const AppCreateForm = (props: AppCreateFormProps) => {
 
                 <div className = "app-add-input-item">
                         <label htmlFor = "notes">Extra Notes</label>
-                        <input name = "notes" onChange = {(e) => {setNotes(e.target.value)}} defaultValue = {notes} />
+                        <textarea name = "notes" onChange = {(e) => {setNotes(e.target.value)}} defaultValue = {notes} />
                 </div>
                 <div className = "app-add-input-item">
                     <ECchooser ECs = {props.ECs} chosenECs = {relevantExtracurriculars} onUpdate = {setRelevantExtracurriculars} />
                 </div>
-            </div>
-            <button onClick = { async () => {
+                <button className = "app-submit" onClick = { async () => {
                 const app: ApplicationSubmission = {uniName, programName, applicationOpenDate, applicationCloseDate, expectedResponseDate, notes, relevantExtracurriculars}
                 const isValid = await ValidateApplication(app)
                 if (isValid) return props.onSubmit(app)
@@ -61,6 +60,8 @@ const AppCreateForm = (props: AppCreateFormProps) => {
                 
                 Submit
             </button>
+            </div>
+            
         </div>
     )
 }

@@ -52,7 +52,7 @@ export default class ECcreateForm extends Component<ECcreateFormProps> {
                         }
                     </div>
 
-                    <button onClick = {() => this.setState({onGoing : !this.state.onGoing})} 
+                    <button onClick = {() => this.setState({onGoing : !this.state.onGoing, })} 
                             className = {((this.state.onGoing) ? "ec-ongoing-toggle-true": "ec-ongoing-toggle")}>
                     Ongoing?                                     
                     </button>

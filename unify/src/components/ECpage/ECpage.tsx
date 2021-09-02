@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useContext , useState , useEffect} from 'react'
 
 import { Redirect, RouteComponentProps } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import tokenContext from '../../contexts/tokenContext'
 import { Extracurricular } from '../@types'
 
@@ -24,8 +25,8 @@ const ECpage = (props: RouteComponentProps) => {
             <div className = "ec-heading-wrapper">
                 <h2>{EC.name}</h2>
                 <p>{EC.description}</p>
+                <button onClick = {() => DeleteEC(EC, token, props.history.replace)}>Delete</button>
             </div>
-
         </div>
     )
 }
@@ -38,6 +39,16 @@ async function getECData(token: String, ID: string) : Promise<Extracurricular | 
     }
     catch(err) {
         return undefined
+    }
+}
+
+async function DeleteEC(EC: Extracurricular, token: string, redirect: Function) {
+    try {
+        const response = await axios.delete(ROOT_URL + "/extracurriculars/" + EC._id, {headers: {user_auth_token: token}})
+        redirect("/")
+    }
+    catch(err: any) {
+        toast.error(err.response.data)
     }
 }
 
