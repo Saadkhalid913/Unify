@@ -14,7 +14,6 @@ const AppCreatePage = (props: RouteComponentProps) => {
     const [ECs, setECs] = useState<Extracurricular[]>()
 
     useEffect(() => {
-        console.log(token)
         getECs(token).then(ECdata => setECs(ECdata))
     }, [token])
 
@@ -40,6 +39,7 @@ async function getECs(token: string): Promise<Extracurricular[] | undefined> {
 
 
 async function SubmitApplication(token: string, app: ApplicationSubmission, redirect: (path: string) => void): Promise<Application | void> {
+    console.log(app)
     try {
         const response = await axios.post(ROOT_URL + "/applications", app, {headers: {user_auth_token: token}})
         redirect(response.data._id)

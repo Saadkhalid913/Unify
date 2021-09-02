@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useContext , useState , useEffect} from 'react'
 
 import { Redirect, RouteComponentProps } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import tokenContext from '../../contexts/tokenContext'
 import { Application } from '../@types'
 
@@ -16,7 +17,6 @@ const ApplicationPage = (props: RouteComponentProps) => {
     useEffect(() => {
         getAppData(token, AppID).then(data => setApp(data))
     }, [setApp, token, AppID])
-
 
 
     if (!token) return <Redirect to ="/login" />
@@ -35,15 +35,28 @@ const ApplicationPage = (props: RouteComponentProps) => {
                     </div>
                 </div>
                 <div className = "app-page-notes">{App.notes}</div>
+                <button onClick = {() => deleteApplication(App, token, props.history.replace)}>Delete Application</button>
             </div>
         </div>
     )
 }
 
 
+async function deleteApplication(App: Application, token: string, redirect: Function) {
+    try {
+        const response = await axios.delete(ROOT_URL + "/applications/" + App._id, {headers: {user_auth_token: token}})
+        redirect("/")
+    }
+    catch(err){
+        toast.error("There was an error deleting your application")
+    }
+}
+
+
 async function getAppData(token: String, ID: string) : Promise<Application | undefined> {
     try {
         const { data : AppData } = await axios.get(ROOT_URL + "/applications/" + ID, {headers: {user_auth_token: token}})
+        console.log(AppData)
         return AppData
     }
     catch(err) {

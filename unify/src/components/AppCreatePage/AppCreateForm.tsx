@@ -17,7 +17,6 @@ const AppCreateForm = (props: AppCreateFormProps) => {
     const [relevantExtracurriculars, setRelevantExtracurriculars] = useState<Extracurricular[]>([])
     const [notes, setNotes] = useState("")
 
-    console.log(relevantExtracurriculars)
     
 
     return (
