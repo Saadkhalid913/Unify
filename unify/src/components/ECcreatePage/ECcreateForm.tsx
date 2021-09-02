@@ -35,7 +35,7 @@ export default class ECcreateForm extends Component<ECcreateFormProps> {
 
                     <div className = "ec-input-wrapper">
                         <label htmlFor = "description">Extracurricular Description</label>
-                        <input name = "description" onChange = {(e) => {this.setState({description: e.target.value})}}/>
+                        <textarea name = "description" onChange = {(e) => {this.setState({description: e.target.value})}}/>
                     </div>
 
                     <div className = "ec-input-wrapper">
@@ -56,13 +56,13 @@ export default class ECcreateForm extends Component<ECcreateFormProps> {
                             className = {((this.state.onGoing) ? "ec-ongoing-toggle-true": "ec-ongoing-toggle")}>
                     Ongoing?                                     
                     </button>
-
-                </div>
-                <button onClick = {async () => {
+                    <button className = "submit-ec" onClick = {async () => {
                     const isValid = await ValidateEC(this.state)
                     if (isValid)
                         this.props.onSubmit(this.state)
                     }}>Submit</button>
+                </div>
+               
             </div>
         )
     

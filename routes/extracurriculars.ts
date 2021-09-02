@@ -11,7 +11,12 @@ const extracurricularRouter = express.Router()
 extracurricularRouter.post("/", auth, async (req: any, res: express.Response) => {
     const isValid = await validateExtracurricularBody(req,res)
     if (!isValid) return 
-    const { name , description , dateStarted, dateEnded, onGoing } = req.body 
+
+
+    let { name , description , dateStarted, dateEnded, onGoing } = req.body 
+
+    if (onGoing) {dateEnded = undefined}
+
     const newExtracurricular: any = new extracurricularModel({ name , description , dateStarted, dateEnded, onGoing })
     const result = await newExtracurricular.save()
     const userID = req._user._id 
