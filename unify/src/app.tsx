@@ -21,7 +21,6 @@ export default class App extends Component  {
         <tokenContext.Provider value = {{token: this.state.token, setToken : this.setToken}}>
             <BrowserRouter>
             <Switch>
-                
                 <Route path = "/applications/add" render = {(props) => <AppCreatePage {...props} />} />
                 <Route path = "/applications/:id" render = {(props) => <ApplicationPage {...props} />} />
                 <Route path = "/extracurriculars/:id" render = {(props) => <ECpage {...props} />} />
