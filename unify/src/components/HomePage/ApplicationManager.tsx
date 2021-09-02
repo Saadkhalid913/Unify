@@ -1,8 +1,11 @@
 import axios from 'axios'
+import app from 'express/lib/application'
+import { appendFileSync } from 'fs'
 import { Component } from 'react'
 import { toast } from 'react-toastify'
 import {Application} from "../@types"
 import AppViewItem from './ApplicationView'
+import {AiOutlinePlusCircle} from "react-icons/ai"
 
 const ROOT_URL = process.env.REACT_APP_root_url
 
@@ -26,6 +29,11 @@ export default class ApplicationManager extends Component<ApplicationManagerProp
 
 
     render() {
+        if (this.state.apps.length === 0) return    <div className = "app-box-wrapper app-box-wrapper-no-apps">
+                                                        <h2 className = "no-apps-message"> No Applications To Show!</h2>
+                                                        <button className = "app-add-button" onClick = {() => this.props.nextPage("/applications/add")}>Create New Application<AiOutlinePlusCircle/></button>
+                                                    </div>
+
         return (<div className = "app-box-wrapper"> 
                        <h2>Your Applications</h2> 
                        <div className ="app-box-title">
@@ -33,7 +41,7 @@ export default class ApplicationManager extends Component<ApplicationManagerProp
                            <span>Program Name</span> 
                         </div> 
                       {this.state.apps.map(app => <AppViewItem key ={app._id} onClick = {() => {this.props.nextPage("/applications/" + app._id)}} app = {app}/>)}  
-                      <button className = "app-add-button" onClick = {() => this.props.nextPage("/applications/add")}>Create New Application</button>
+                      <button className = "app-add-button" onClick = {() => this.props.nextPage("/applications/add")}>Create New Application<AiOutlinePlusCircle /></button>
                 </div>)
     }
 

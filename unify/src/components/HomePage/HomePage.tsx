@@ -3,6 +3,7 @@ import { Redirect, RouteComponentProps } from 'react-router-dom'
 import tokenContext from '../../contexts/tokenContext'
 import ApplicationManager from './ApplicationManager'
 import ECmanager from './ECmanager'
+import Navbar from '../Navbar'
 
 const Homepage = (props: RouteComponentProps) => {
 
@@ -11,6 +12,7 @@ const Homepage = (props: RouteComponentProps) => {
     return (
             <div className = "homepage-wrapper">
                 <div className = "homepage">
+                    <Navbar />
                     <ApplicationManager token = {token} nextPage = {props.history.push} />
                     <ECmanager token = {token} nextPage = {props.history.push}/>
                 </div>
