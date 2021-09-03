@@ -656,3 +656,79 @@
   box-shadow: inset 2px 2px 4px 1px grey, inset -2px -2px 4px 1px white;
 
 }
+
+.ec-page-wrapper {
+  width: 100vw;
+  height: 100vh;
+  padding: 2%;
+
+}
+
+
+.ec-page {
+  padding: 2rem;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 0 16px 2px grey;
+  width: 100%;
+  height: 100%; 
+}
+
+
+.ec-page > h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+
+}
+
+.ec-page > h5 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+
+}
+
+.ec-page > p {
+  font-weight: 300;
+  margin-bottom: 3rem;
+  
+}
+
+.ec-dates {
+  font-size: 1rem;
+  margin-bottom: 4rem;
+  border: 1px solid black;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ec-dates > span {
+  margin-bottom: 0.5rem;
+  background-color: blue;
+}
+
+
+.ec-delete { 
+  transition-duration: 250ms;
+  border-radius: 100px;
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  align-items: center;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1rem;
+  align-self: flex-start;
+  justify-self: flex-end;
+  width: 7.5%;
+  background-color: rgb(255, 92, 43);
+  cursor: pointer
+}
+
+.ec-delete:active {
+  box-shadow: 0 0 12px 1px grey;
+  transform: scale(0.9, 0.9);
+}

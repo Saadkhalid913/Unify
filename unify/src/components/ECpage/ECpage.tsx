@@ -22,10 +22,15 @@ const ECpage = (props: RouteComponentProps) => {
     if (!EC) return <div>No EC Found</div>
     else return (
         <div className = "ec-page-wrapper">
-            <div className = "ec-heading-wrapper">
+            <div className = "ec-page">
                 <h2>{EC.name}</h2>
+                <h5>Description</h5>
                 <p>{EC.description}</p>
-                <button onClick = {() => DeleteEC(EC, token, props.history.replace)}>Delete</button>
+                <div className = "ec-dates">
+                    <span>Date Started: {new Date(Date.parse(EC.dateStarted)).toDateString()}</span>
+                    <span>{(EC.onGoing) ?  "Date ended: This extracurricular is ongoing" : `Date ended: ${new Date(Date.parse(EC.dateEnded!)).toDateString()}`}</span>
+                </div>
+                <button className = "ec-delete" onClick = {() => DeleteEC(EC, token, props.history.replace)}>Delete</button>
             </div>
         </div>
     )
@@ -44,7 +49,7 @@ async function getECData(token: String, ID: string) : Promise<Extracurricular | 
 
 async function DeleteEC(EC: Extracurricular, token: string, redirect: Function) {
     try {
-        const response = await axios.delete(ROOT_URL + "/extracurriculars/" + EC._id, {headers: {user_auth_token: token}})
+        await axios.delete(ROOT_URL + "/extracurriculars/" + EC._id, {headers: {user_auth_token: token}})
         redirect("/")
     }
     catch(err: any) {
