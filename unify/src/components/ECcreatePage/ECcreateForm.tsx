@@ -105,7 +105,8 @@ async function ValidateEC(EC: ExtracurricularSubmission): Promise<boolean> {
                                 .min(1)
                                 .options({convert: true}),
 
-        onGoing :  joi.boolean()
+        onGoing :  joi.boolean(),
+        references: joi.array()
     })
 
     try {

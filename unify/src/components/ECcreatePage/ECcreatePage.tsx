@@ -26,6 +26,7 @@ const ECcreatePage = (props: RouteComponentProps) => {
 
 async function SubmitEC(EC: ExtracurricularSubmission, token: string, redirect: (path: string) => void): Promise<void> {
     try {
+        console.log(EC)
         await axios.post(ROOT_URL + "/extracurriculars", EC, {headers: {user_auth_token: token}})
         redirect("/")
     }

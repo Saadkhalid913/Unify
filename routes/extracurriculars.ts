@@ -3,7 +3,6 @@ import { extracurricularModel, userModel } from "../models/models"
 import { validateExtracurricularBody } from "../utils/validationsFunctions"
 import {auth} from "../middlewear/auth"
 import mongoose from "mongoose"
-import extracurricularSchema from "../models/extracurricularSchema"
 
 
 const extracurricularRouter = express.Router()
@@ -13,11 +12,11 @@ extracurricularRouter.post("/", auth, async (req: any, res: express.Response) =>
     if (!isValid) return 
 
 
-    let { name , description , dateStarted, dateEnded, onGoing } = req.body 
+    let { name , description , dateStarted, dateEnded, onGoing, references } = req.body 
 
     if (onGoing) {dateEnded = undefined}
 
-    const newExtracurricular: any = new extracurricularModel({ name , description , dateStarted, dateEnded, onGoing })
+    const newExtracurricular: any = new extracurricularModel({ name , description , dateStarted, dateEnded, onGoing , references })
     const result = await newExtracurricular.save()
     const userID = req._user._id 
     const response = await userModel.findByIdAndUpdate(userID, { $push: { extracurriculars: result._id } })

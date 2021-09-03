@@ -30,7 +30,9 @@ const extracurricularSchema = new mongoose.Schema({
         default: true
     },
     
-    references: {type: Array}
+    references: {
+        type: Array
+    }
 })
 
 export interface Extracurricular {
