@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import * as joi from "joi"
-import { ExtracurricularSubmission } from "../@types" 
+import { ExtracurricularSubmission, reference } from "../@types" 
 import { toast } from 'react-toastify'
-
+import ReferenceChooser from "./ReferenceChooser"
 
 interface ECcreateFormProps {
     onSubmit: (EC: ExtracurricularSubmission) => void 
@@ -18,7 +18,8 @@ export default class ECcreateForm extends Component<ECcreateFormProps> {
         description: "",
         dateStarted: 0,
         dateEnded: 0,
-        onGoing: false
+        onGoing: false,
+        references: []
     }
 
 
@@ -56,6 +57,8 @@ export default class ECcreateForm extends Component<ECcreateFormProps> {
                             className = {((this.state.onGoing) ? "ec-ongoing-toggle-true": "ec-ongoing-toggle")}>
                     Ongoing?                                     
                     </button>
+
+                    <ReferenceChooser setReferences = {(ref: reference[]) => {this.setState({references: ref})}} references = {this.state.references!} />
                     <button className = "submit-ec" onClick = {async () => {
                     const isValid = await ValidateEC(this.state)
                     if (isValid)

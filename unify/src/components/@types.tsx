@@ -5,6 +5,7 @@ export interface Extracurricular {
     dateStarted: string,
     dateEnded?: string,
     onGoing: boolean,
+    references?: reference[]
 }
 
 export interface Application {
@@ -35,4 +36,11 @@ export interface ExtracurricularSubmission {
     dateStarted: number,
     dateEnded?: number,
     onGoing: boolean,
+    references?: reference[]
+}
+
+export interface reference {
+    name: string,
+    phoneNumber?: string;
+    email?: string
 }

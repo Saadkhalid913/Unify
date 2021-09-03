@@ -28,7 +28,9 @@ const extracurricularSchema = new mongoose.Schema({
     onGoing: {
         type: Boolean,
         default: true
-    }
+    },
+    
+    references: {type: Array}
 })
 
 export interface Extracurricular {
