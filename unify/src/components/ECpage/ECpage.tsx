@@ -30,6 +30,17 @@ const ECpage = (props: RouteComponentProps) => {
                     <span>Date Started: {new Date(Date.parse(EC.dateStarted)).toDateString()}</span>
                     <span>{(EC.onGoing) ?  "Date ended: This extracurricular is ongoing" : `Date ended: ${new Date(Date.parse(EC.dateEnded!)).toDateString()}`}</span>
                 </div>
+
+                <div className = "ec-references">
+                    {EC.references && EC.references.map(ref => {
+                        return (
+                        <div className = "ec-reference-info">
+                            <span>{ref.name}</span>
+                            <span>{ref.email}</span>
+                            <span>{ref.phoneNumber}</span>
+                        </div>)
+                    })}
+                </div>
                 <button className = "ec-delete" onClick = {() => DeleteEC(EC, token, props.history.replace)}>Delete</button>
             </div>
         </div>

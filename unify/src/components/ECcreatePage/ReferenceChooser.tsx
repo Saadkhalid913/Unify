@@ -22,7 +22,11 @@ const ReferenceChooser = (props: referenceChooserProps) => {
             <input onChange = {(e) => setEmail(e.target.value)} type ="email" placeholder = "johnsmith@email.com" />
             <input onChange = {(e) => setNumber(e.target.value)} type ="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder = "(123)-456-789" />
             <button onClick = {() => {
-                props.setReferences([...props.references, {name, email, phoneNumber: number}])
+                if (name)
+                    props.setReferences([...props.references, {name, email, phoneNumber: number}])
+                setName("")
+                setEmail("")
+                setNumber("")
             }} >Add Reference</button>
              </div>
         </div>
@@ -39,7 +43,7 @@ const ReferenceChooser = (props: referenceChooserProps) => {
         </div>
         <div className = "references-wrapper">
         {props.references.map(ref => {
-            return <div className = "reference-item" key = {ref.name}>
+            return <div className = "reference-item" key = {ref.name + ref.email + ref.phoneNumber}>
                 <span>{ref.name}</span>
                 <span>{ref.email || "No email provided"}</span>
                 <span>{ref.phoneNumber || "No phone number provided"}</span>
@@ -59,7 +63,11 @@ const ReferenceChooser = (props: referenceChooserProps) => {
             <input onChange = {(e) => setEmail(e.target.value)} type ="email" placeholder = "johnsmith@email.com" />
             <input onChange = {(e) => setNumber(e.target.value)} type ="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder = "(123)-456-789" />
             <button onClick = {() => {
-                props.setReferences([...props.references, {name, email, phoneNumber: number}])
+                if (name)
+                     props.setReferences([...props.references, {name, email, phoneNumber: number}])
+                setName("")
+                setEmail("")
+                setNumber("")
             }} >Add Reference</button>
             </div>
         </div>

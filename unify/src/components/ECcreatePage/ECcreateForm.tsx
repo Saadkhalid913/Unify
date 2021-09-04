@@ -101,9 +101,7 @@ async function ValidateEC(EC: ExtracurricularSubmission): Promise<boolean> {
                                 .options({convert: true})
                                 .required(),
 
-        dateEnded: joi.date()
-                                .min(1)
-                                .options({convert: true}),
+        dateEnded: joi.date(),
 
         onGoing :  joi.boolean(),
         references: joi.array()
