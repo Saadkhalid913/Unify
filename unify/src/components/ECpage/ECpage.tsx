@@ -32,14 +32,16 @@ const ECpage = (props: RouteComponentProps) => {
                 </div>
 
                 <div className = "ec-references">
+                    <h4>References:</h4>
                     {EC.references && EC.references.map(ref => {
                         return (
-                        <div className = "ec-reference-info">
+                        <div key={ref.name} className = "ec-reference-info">
                             <span>{ref.name}</span>
                             <span>{ref.email}</span>
                             <span>{ref.phoneNumber}</span>
                         </div>)
                     })}
+                    {EC.references && EC.references.length === 0 && <h3>No references</h3>}
                 </div>
                 <button className = "ec-delete" onClick = {() => DeleteEC(EC, token, props.history.replace)}>Delete</button>
             </div>

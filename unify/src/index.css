@@ -698,8 +698,48 @@
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: 0.5rem;
+}
+
+.ec-references {
+  display:flex;
+  flex-direction: column;
+  width: min(40rem, 90%);
+  margin-bottom: 1.5rem;
 
 }
+.ec-references > h4 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+
+}
+
+.ec-reference-info {
+  font-weight: 600;
+  display:grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  width: 100%;
+  margin-bottom: 0.75rem;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--blue-tone);
+  color: white;
+  padding: 0.25rem;
+
+}
+
+.ec-reference-info > span {
+  padding: 0.5rem;
+  text-align: center;
+  vertical-align: center;
+}
+
+.ec-reference-info > span:nth-child(2) {
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+}
+
+
+
 
 .ec-page > p {
   font-weight: 300;
