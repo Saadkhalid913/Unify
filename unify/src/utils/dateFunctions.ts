@@ -5,6 +5,6 @@ export function dateToDaysRemaining(s: string): string {
 
     const daysRemaining = Math.floor(millisecondsRemaining / millisecondsInDay)
 
-    return `${Math.min(0, daysRemaining)} days remaining`
+    return `${Math.max(0, daysRemaining)} days`
 
 }

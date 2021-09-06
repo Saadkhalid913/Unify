@@ -37,6 +37,8 @@ export default class ApplicationManager extends Component<ApplicationManagerProp
                        <div className ="app-box-title">
                            <span>University Name</span> 
                            <span>Program Name</span> 
+                           <span>Applications Open</span> 
+                           <span>Applications Close</span> 
                         </div> 
                       {this.state.apps.map(app => <AppViewItem key ={app._id} onClick = {() => {this.props.nextPage("/applications/" + app._id)}} app = {app}/>)}  
                       <button className = "app-add-button" onClick = {() => this.props.nextPage("/applications/add")}>Create New Application<AiOutlinePlusCircle /></button>

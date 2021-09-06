@@ -1,6 +1,6 @@
 import React from 'react'
 import { Application } from '../@types'
-
+import { dateToDaysRemaining } from "../../utils/dateFunctions"
 
 interface AppViewItemProps {
     app: Application
@@ -14,6 +14,8 @@ const AppViewItem = (props: AppViewItemProps) => {
         <div onClick = {() => props.onClick()} className = "app-view-item">
             <span>{app.uniName}</span>   
             <span>{app.programName}</span>   
+            <span>{dateToDaysRemaining(app.applicationOpenDate)}</span>   
+            <span>{dateToDaysRemaining(app.applicationCloseDate)}</span>   
         </div>
     )
 }

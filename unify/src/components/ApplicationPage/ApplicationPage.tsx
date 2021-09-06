@@ -1,10 +1,11 @@
 import axios from 'axios'
-import React, { useContext , useState , useEffect} from 'react'
+import React, { useContext , useState , useEffect, Fragment} from 'react'
 import { dateToDaysRemaining } from '../../utils/dateFunctions'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import tokenContext from '../../contexts/tokenContext'
 import { Application } from '../@types'
+import BackButton from '../backButton'
 
 const ROOT_URL = process.env.REACT_APP_root_url
 
@@ -22,7 +23,7 @@ const ApplicationPage = (props: RouteComponentProps) => {
     if (!token) return <Redirect to ="/login" />
     if (!App) return <div>No App Found</div>
     else return (
-        <div className= "app-page-wrapper">
+            <div className= "app-page-wrapper">
             <div className = "app-page">
                 <div className = "app-page-heading-wrapper">
                     <h2>{App.uniName}</h2>

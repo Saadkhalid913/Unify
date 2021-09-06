@@ -239,7 +239,7 @@
   font-weight: 600;
   color: white;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-bottom: 0.5rem;
 }
 
@@ -253,7 +253,7 @@
   height: 5rem;
   display:grid;
   font-size: 2rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .app-add-button {
@@ -269,16 +269,15 @@
 
 .app-view-item > span {
   display:flex;
+  font-size: 1.25rem;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   align-items: center;
   text-transform: capitalize;
-}
-
-.app-view-item > span:hover {
   cursor: pointer
 }
+
 
 .ec-box-wrapper {
   width: 100%;
@@ -324,7 +323,8 @@
 .app-page-wrapper { 
   width: 100vw;
   height: 100vh; 
-  padding: 2%
+  padding: 2%;
+
 }
 
 .app-page {
@@ -953,5 +953,18 @@
 .reference-add-wrapper > div > button {
   width: 13%;
   padding: 0.25rem;
-  
 } 
+
+.back-button {
+  padding: 0.75rem;
+  border-radius: 100px;
+  background-color: white;
+  box-shadow: 0px 2px 8px 1px grey;
+  border: none;
+  top: 1%;
+  left: 50%;
+  margin-bottom: 1vh;
+  margin-top: 1vh;
+  padding-left: 30px;
+  padding-right: 30px;
+}
