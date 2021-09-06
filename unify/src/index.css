@@ -30,6 +30,20 @@
   top: 0%;
   margin-bottom: 2rem;
   box-shadow: 0 0 16px 2px grey;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar > a {
+  margin: 1rem;
+  color:white;
+  font-weight: 600;
+  text-decoration:none;
+}
+
+.homepage-wrapper .navbar {
   border-radius: 4px;
 }
 

@@ -36,7 +36,7 @@ async function SignUp(data: SignupData, setToken: (token: string) => void, redir
     }
     catch(err: any) {
         if (err.response) toast.error(err.response.data)
-        else toast.error("There was en error conntecting to the server")
+        else toast.error("There was en error connecting to the server")
     }
 }
 
@@ -52,8 +52,8 @@ async function ValidateSignup(data: SignupData): Promise<boolean> {
         await schema.validateAsync(data)
         return true
     }
-    catch(err) {
-        console.log(err)
+    catch(err: any) {
+        toast.error(err.details[0].message)
         return false 
     }
 }

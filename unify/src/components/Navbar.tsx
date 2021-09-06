@@ -1,7 +1,9 @@
 import React from 'react'
-
-const Navbar = () => {
-    return <div className = "navbar"></div>
+import { Link } from "react-router-dom"
+const Navbar = (props: {text?: string}) => {
+    return <div className = "navbar">
+                <Link to = "login">{props.text}</Link>
+            </div>
 }
 
 export default Navbar

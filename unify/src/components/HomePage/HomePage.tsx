@@ -12,7 +12,7 @@ const Homepage = (props: RouteComponentProps) => {
     return (
             <div className = "homepage-wrapper">
                 <div className = "homepage">
-                    <Navbar />
+                    <Navbar text = "Log out"/>
                     <ApplicationManager token = {token} nextPage = {props.history.push} />
                     <ECmanager token = {token} nextPage = {props.history.push}/>
                 </div>
