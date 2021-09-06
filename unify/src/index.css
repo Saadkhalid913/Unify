@@ -379,6 +379,18 @@
   box-shadow: 2px 2px 8px 2px grey, -2px -2px 8px 2px white;
 }
 
+.app-page-notes {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.25rem;;
+}
+
+.app-page-notes > h4{
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
 .app-page-ecs > div:active {
   transition-duration: 500ms;
   box-shadow: inset 2px 2px 8px 2px grey, inset -2px -2px 8px 2px white;
@@ -388,9 +400,55 @@
   cursor: pointer
 }
 
+.app-dates {
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 0.75rem;
+  padding-top: 0.75rem;
+
+}
+
+.app-dates > div {
+  margin-bottom: 0.5rem;
+  background-color: var(--blue-tone);
+  color: white;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.5rem;
+  border-radius: 4px;
+
+}
+ 
+
 .no-apps-message {
   margin: 4rem;
   font-size: 3rem;
+}
+
+.app-delete-button {
+  transition-duration: 250ms;
+  border-radius: 100px;
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  align-items: center;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1rem;
+  align-self: flex-start;
+  justify-self: flex-end;
+  width: 7.5%;
+  color: white;
+  font-weight: 800;
+  background-color: rgb(255, 92, 43);
+  cursor: pointer
+}
+
+.app-delete-button:active{
+  box-shadow: 0 0 12px 1px grey;
+  transform: scale(0.9, 0.9);
 }
 
 
@@ -822,9 +880,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-}
-
-.reference-item > span > button {
 }
 
 

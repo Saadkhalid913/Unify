@@ -14,7 +14,7 @@ export interface Application {
     programName: string,
     applicationOpenDate: string,
     applicationCloseDate: string,
-    ExpectedResponseDate?: string,
+    expectedResponseDate: string,
     relevantExtracurriculars: Extracurricular[],
     notes: string,
 }
