@@ -787,6 +787,7 @@
   cursor: pointer
 }
 
+
 .ec-delete:active {
   box-shadow: 0 0 12px 1px grey;
   transform: scale(0.9, 0.9);
