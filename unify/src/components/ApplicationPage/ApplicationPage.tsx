@@ -1,11 +1,10 @@
 import axios from 'axios'
-import React, { useContext , useState , useEffect, Fragment} from 'react'
+import React, { useContext , useState , useEffect} from 'react'
 import { dateToDaysRemaining } from '../../utils/dateFunctions'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import tokenContext from '../../contexts/tokenContext'
 import { Application } from '../@types'
-import BackButton from '../backButton'
 
 const ROOT_URL = process.env.REACT_APP_root_url
 

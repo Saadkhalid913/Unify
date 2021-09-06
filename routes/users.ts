@@ -56,12 +56,13 @@ userRouter.post("/", async (req: any, res: any, next: Function) => {
 userRouter.post("/login", async (req: any, res: express.Response) => {
     const { email , password } = req.body 
     const user : User = await userModel.findOne({email})
+    if (!user) return res.status(400).send("No user with that email")
     const isValid = await bcrypt.compare(password, user.password)
     if (isValid) {
         return res.send({user_auth_token: user.generateAuthToken()})
     }
     else {
-        return res.send({error: "Invalid credentials"})
+        return res.status(401).send("Invalid credentials")
     }
 })
 
