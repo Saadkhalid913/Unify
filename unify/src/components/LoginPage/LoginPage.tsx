@@ -28,7 +28,9 @@ async function LogIn(data: LoginData, setToken: (t: string) => void, redirect: (
         redirect("/")
     }
     catch(err: any) {
-    toast.error(err.response.data)
+
+    if (err.response) toast.error(err.response.data)
+    else toast.error("There was an error connecting to the server")
     }
 
 }
