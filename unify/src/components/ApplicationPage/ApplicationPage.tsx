@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useContext , useState , useEffect} from 'react'
-
+import { dateToDaysRemaining } from '../../utils/dateFunctions'
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import tokenContext from '../../contexts/tokenContext'
@@ -29,9 +29,9 @@ const ApplicationPage = (props: RouteComponentProps) => {
                     <h4>{App.programName}</h4>
                 </div>
                 <div className = "app-dates">
-                    <div>Application opens: {App.applicationOpenDate.substr(0,10)}</div>
-                    <div>Application closes: {App.applicationCloseDate.substr(0,10)}</div>
-                    <div>Expected response date: {App.expectedResponseDate.substr(0,10)}</div>
+                    <div>Application opens: {App.applicationOpenDate.substr(0,10)} ({dateToDaysRemaining(App.applicationOpenDate)})</div>
+                    <div>Application closes: {App.applicationCloseDate.substr(0,10)} ({dateToDaysRemaining(App.applicationCloseDate)})</div>
+                    <div>Expected response date: {App.expectedResponseDate.substr(0,10)} ({dateToDaysRemaining(App.expectedResponseDate)})</div>
                 </div>
                 <div className = "app-page-ec-wrapper">
                     <h4>Relevant Extracurriculars</h4>
@@ -65,7 +65,6 @@ async function deleteApplication(App: Application, token: string, redirect: Func
 async function getAppData(token: String, ID: string) : Promise<Application | undefined> {
     try {
         const { data : AppData } = await axios.get(ROOT_URL + "/applications/" + ID, {headers: {user_auth_token: token}})
-        console.log(AppData)
         return AppData
     }
     catch(err) {
@@ -73,6 +72,8 @@ async function getAppData(token: String, ID: string) : Promise<Application | und
         return undefined
     }
 }
+
+
 
 
 export default ApplicationPage

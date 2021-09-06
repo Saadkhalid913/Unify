@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { useContext , useState , useEffect} from 'react'
-
 import { Redirect, RouteComponentProps } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import tokenContext from '../../contexts/tokenContext'
@@ -69,6 +68,7 @@ async function DeleteEC(EC: Extracurricular, token: string, redirect: Function) 
         toast.error(err.response.data)
     }
 }
+
 
 
 export default ECpage
