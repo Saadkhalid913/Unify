@@ -46,6 +46,7 @@ export interface reference {
 }
 
 export interface essay {
+    _id: string,
     title: string,
     body: string,
     targetSchool? :string,

@@ -6,6 +6,10 @@ import { EssayManager } from './EssayManager'
 export const ProfilePage = (props: RouteComponentProps) => {
     const {token} = useContext(tokenContext)
     return (
-        <EssayManager token = {token} />
+        <div className = "pfp-wrapper">  
+            <EssayManager token = {token} />
+
+
+        </div>
     )
 }
