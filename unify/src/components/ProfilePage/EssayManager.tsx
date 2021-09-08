@@ -27,7 +27,7 @@ export class EssayManager extends Component<EssayManagerProps> {
     render() {
         return (<React.Fragment>
                     <div className = "essay-manager-wrapper">
-                        {this.state.essays.map(es => <div onClick = {() => this.setState({selectedEssay: es})}>{es.title}</div>)}
+                        {this.state.essays.map(es => <div className = "essay-item" onClick = {() => this.setState({selectedEssay: es})}>{es.title}</div>)}
                     </div>
                     {this.state.selectedEssay && <EssayViewer onClose = { this.closeViewer } essay = {this.state.selectedEssay!} /> }
                 </React.Fragment>)
