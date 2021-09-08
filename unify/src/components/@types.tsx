@@ -49,6 +49,11 @@ export interface essay {
     _id: string,
     title: string,
     body: string,
+    targetSchool? :string,    
+}
+export interface essaySubmission {
+    title: string,
+    body: string,
     targetSchool? :string,
     
 }

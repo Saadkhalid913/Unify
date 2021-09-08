@@ -17,6 +17,12 @@ essayRouter.get("/", auth, async (req: any, res: express.Response) => {
     res.send(essays["essays"])
 })
 
+essayRouter.get("/:id", auth, async (req: any, res: express.Response) => {
+    const ID = req.params.id
+    const essay = await essayModel.findById(ID)
+    res.send(essay)
+})
+
 essayRouter.put("/:id", auth, async (req: any, res: express.Response) => {
     const {body} = req.body;
     const id = req.params.id
