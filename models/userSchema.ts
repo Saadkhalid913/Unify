@@ -50,7 +50,10 @@ const userSchema = new mongoose.Schema({
         type: Array,
         ref: "applications",
         default :[]
-    }
+    },
+    essays: {type: Array,
+            ref: "essays",
+            default: []}
 })
 
 userSchema.methods.generateAuthToken = function () {
