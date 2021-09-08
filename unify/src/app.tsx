@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import LoginPage from './components/LoginPage/LoginPage'
 import SignupPage from './components/SignupPage/SignupPage'
 import tokenContext from "./contexts/tokenContext"
@@ -10,6 +10,7 @@ import ECpage from './components/ECpage/ECpage'
 import AppCreatePage from './components/AppCreatePage/AppCreatePage'
 import ECcreatePage from './components/ECcreatePage/ECcreatePage'
 import { ProfilePage } from './components/ProfilePage/Profile'
+import EssayPage from './components/EssayCreatePage/EssayPage'
 
 export default class App extends Component  {
     state = {
@@ -29,6 +30,7 @@ export default class App extends Component  {
                 <Route path = "/extracurriculars/:id" render = {(props) => <ECpage {...props} />} />
                 <Route path = "/login" render = {(props) => <LoginPage {...props} />} />
                 <Route path = "/signup" render = {(props) => <SignupPage {...props} />} />
+                <Route path = "/essays" render = {(props) => <EssayPage {...props} />} />
                 <Route path = "/profile" render = {(props) => <ProfilePage {...props} />} />
                 <Route path = "/" render = {(props) => <Homepage {...props} />} />
             </Switch>

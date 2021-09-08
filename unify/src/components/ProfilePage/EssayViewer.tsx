@@ -15,7 +15,7 @@ const EssayViewer = (props: EssayViewerProps) => {
                 <h2>{props.essay.title}</h2>
                 <pre>{props.essay.body}</pre>
                 {props.essay.targetSchool && <h4>Target School: {props.essay.targetSchool}</h4>}
-                <Link to = {"/essays/" + props.essay._id}>Edit</Link>
+                <Link to = {"/essays/edit/" + props.essay._id}>Edit</Link>
            </div>
 }
 
