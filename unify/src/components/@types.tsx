@@ -44,3 +44,10 @@ export interface reference {
     phoneNumber?: string;
     email?: string
 }
+
+export interface essay {
+    title: string,
+    body: string,
+    targetSchool? :string,
+    
+}

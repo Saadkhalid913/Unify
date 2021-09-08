@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ECpage from './components/ECpage/ECpage'
 import AppCreatePage from './components/AppCreatePage/AppCreatePage'
 import ECcreatePage from './components/ECcreatePage/ECcreatePage'
+import { ProfilePage } from './components/ProfilePage/Profile'
 
 export default class App extends Component  {
     state = {
@@ -28,6 +29,7 @@ export default class App extends Component  {
                 <Route path = "/extracurriculars/:id" render = {(props) => <ECpage {...props} />} />
                 <Route path = "/login" render = {(props) => <LoginPage {...props} />} />
                 <Route path = "/signup" render = {(props) => <SignupPage {...props} />} />
+                <Route path = "/profile" render = {(props) => <ProfilePage {...props} />} />
                 <Route path = "/" render = {(props) => <Homepage {...props} />} />
             </Switch>
         </BrowserRouter>
