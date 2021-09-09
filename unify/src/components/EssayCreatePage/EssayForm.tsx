@@ -49,7 +49,24 @@ export default class EssayForm extends Component<EssayFormProps> {
                 </div>
             </div>
         )
-        return <div>EssayForm</div>
+        return (
+        <div className = "essay-form-wrapper">
+                    <div className="essay-form">
+
+                        <div className = "essay-form-input">
+                            <label htmlFor="title">Essay Title</label>
+                            <input type = "text" name = "title" defaultValue = {this.state.title} onChange = { e => this.setState({title: e.target.value})} />
+                        </div>
+
+                        <div className = "essay-form-input">
+                            <label htmlFor="body">Essay Body</label>
+                            <textarea name = "body" defaultValue = {this.state.body} onChange = { e => this.setState({body: e.target.value})}/>
+                        </div>
+
+                        <button onClick = {this.submitNew}>Submit</button>
+                    </div>
+                </div>
+    )
     }
 
 
@@ -61,6 +78,21 @@ export default class EssayForm extends Component<EssayFormProps> {
             //@ts-ignore
             const { data } = await axios.put(ROOT_URL + "/essays/" + this.props.match.params.id, newEssay, {headers: {user_auth_token: this.props.token}})
             console.log(data)
+        }   
+        catch(err: any) {
+            console.log(err)
+        }
+    
+    }
+
+    submitNew = async () => {
+        const {title, body, targetSchool} = this.state;
+        const newEssay : essaySubmission = {title, body, targetSchool}
+
+        try {
+            //@ts-ignore
+            const { data } = await axios.post(ROOT_URL + "/essays" , newEssay, {headers: {user_auth_token: this.props.token}})
+
         }   
         catch(err: any) {
             console.log(err)
