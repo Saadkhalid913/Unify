@@ -10,7 +10,7 @@ const EssayPage = (props: RouteComponentProps) => {
         <BrowserRouter>
             <Switch>
                 <Route path ="/essays/edit/:id" render = {(props: RouteComponentProps) =>  <EssayForm {...props} token = {token} edit = {true} />} />
-                <Route path ="/essays/:id" render = {(props: RouteComponentProps) => <EssayForm {...props} token = {token} edit = {false} />} />
+                <Route path ="/essays/add" render = {(props: RouteComponentProps) => <EssayForm {...props} token = {token} edit = {false} />} />
             </Switch>
         </BrowserRouter>
     )

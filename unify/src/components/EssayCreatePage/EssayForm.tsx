@@ -55,12 +55,17 @@ export default class EssayForm extends Component<EssayFormProps> {
 
                         <div className = "essay-form-input">
                             <label htmlFor="title">Essay Title</label>
-                            <input type = "text" name = "title" defaultValue = {this.state.title} onChange = { e => this.setState({title: e.target.value})} />
+                            <input type = "text" name = "title" onChange = { e => this.setState({title: e.target.value})} />
+                        </div>
+                        
+                        <div className = "essay-form-input">
+                            <label htmlFor="targetSchool">Target School</label>
+                            <input type = "text" name = "targetSchool"  onChange = { e => this.setState({targetSchool: e.target.value})} />
                         </div>
 
                         <div className = "essay-form-input">
                             <label htmlFor="body">Essay Body</label>
-                            <textarea name = "body" defaultValue = {this.state.body} onChange = { e => this.setState({body: e.target.value})}/>
+                            <textarea name = "body" onChange = { e => this.setState({body: e.target.value})}/>
                         </div>
 
                         <button onClick = {this.submitNew}>Submit</button>
@@ -91,8 +96,7 @@ export default class EssayForm extends Component<EssayFormProps> {
 
         try {
             //@ts-ignore
-            const { data } = await axios.post(ROOT_URL + "/essays" , newEssay, {headers: {user_auth_token: this.props.token}})
-
+            await axios.post(ROOT_URL + "/essays" , newEssay, {headers: {user_auth_token: this.props.token}})
         }   
         catch(err: any) {
             console.log(err)

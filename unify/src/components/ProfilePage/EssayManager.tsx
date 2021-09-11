@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import { essay  } from "../@types"
 import EssayViewer from './EssayViewer'
+import { Link } from "react-router-dom"
 
 const ROOT_URL = process.env.REACT_APP_root_url
 
@@ -28,6 +29,7 @@ export class EssayManager extends Component<EssayManagerProps> {
         return (<React.Fragment>
                     <div className = "essay-manager-wrapper">
                         {this.state.essays.map(es => <div className = "essay-item" onClick = {() => this.setState({selectedEssay: es})}>{es.title}</div>)}
+                        <Link to = "/essays/add">Add Essay</Link>
                     </div>
                     {this.state.selectedEssay && <EssayViewer onClose = { this.closeViewer } essay = {this.state.selectedEssay!} /> }
                 </React.Fragment>)

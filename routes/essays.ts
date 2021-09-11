@@ -5,11 +5,14 @@ import { auth } from "../middlewear/auth"
 const essayRouter = express.Router()
 
 essayRouter.post("/", auth, async (req: any, res: express.Response) => {
-    const { title, body, targetSchool } = req.body;
-    const essay = new essayModel({title, body, targetSchool})
-    const result = await essay.save();
-    const user = await userModel.findByIdAndUpdate(req._user._id, {$push: {essays: result._id}})
-    return res.send(result)
+    try {
+        const { title, body, targetSchool } = req.body;
+        const essay = new essayModel({title, body, targetSchool})
+        const result = await essay.save();
+        const user = await userModel.findByIdAndUpdate(req._user._id, {$push: {essays: result._id}})
+        return res.send(result)
+    }
+    catch(err) {console.log(err)}
 })
 essayRouter.get("/", auth, async (req: any, res: express.Response) => {
     const userID = req._user._id;
