@@ -1094,4 +1094,48 @@
   opacity: 90%;
 }
 
+.essay-form-wrapper {
+  padding: 2%;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+.essay-form {
+  display:flex;
+  flex-direction: column;
+  padding: 3%;
+  box-shadow: 0 0 16px 2px grey;
+  width: 100%;
+  height: 100%;
+}
+
+.essay-form-input {
+  display :flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+}
+
+.essay-form-input > label {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+
+}
+
+.essay-form-input > input {
+  font-size: 1rem;
+  border-radius: 4px;
+  vertical-align: center;
+  padding: 0.5rem
+}
+
+
+.essay-form-input > textarea {
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: 4px;
+  height: 24rem
+}
 
