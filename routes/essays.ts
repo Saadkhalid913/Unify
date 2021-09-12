@@ -12,7 +12,9 @@ essayRouter.post("/", auth, async (req: any, res: express.Response) => {
         const user = await userModel.findByIdAndUpdate(req._user._id, {$push: {essays: result._id}})
         return res.send(result)
     }
-    catch(err) {console.log(err)}
+    catch(err) {
+        return res.status(503).send("Could not save your essay")
+    }
 })
 essayRouter.get("/", auth, async (req: any, res: express.Response) => {
     const userID = req._user._id;
@@ -27,9 +29,9 @@ essayRouter.get("/:id", auth, async (req: any, res: express.Response) => {
 })
 
 essayRouter.put("/:id", auth, async (req: any, res: express.Response) => {
-    const {body} = req.body;
+    const {title, body} = req.body;
     const id = req.params.id
-    const result = await essayModel.findByIdAndUpdate(id, {body});
+    const result = await essayModel.findByIdAndUpdate(id, {title: title, body: body});
     res.send(result)
 })
 essayRouter.delete("/:id", auth, async (req: any, res: express.Response) => {

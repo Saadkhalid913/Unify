@@ -28,10 +28,10 @@ export class EssayManager extends Component<EssayManagerProps> {
     render() {
         return (<React.Fragment>
                     <div className = "essay-manager-wrapper">
-                        {this.state.essays.map(es => <div className = "essay-item" onClick = {() => this.setState({selectedEssay: es})}>{es.title}</div>)}
+                        {this.state.essays.map(es => <div key = {es._id} className = "essay-item" onClick = {() => this.setState({selectedEssay: es})}>{es.title}</div>)}
                         <Link to = "/essays/add">Add Essay</Link>
                     </div>
-                    {this.state.selectedEssay && <EssayViewer onClose = { this.closeViewer } essay = {this.state.selectedEssay!} /> }
+                    {this.state.selectedEssay && <EssayViewer onDelete = {this.deleteEssay} onClose = { this.closeViewer } essay = {this.state.selectedEssay!} /> }
                 </React.Fragment>)
     }
 
@@ -46,5 +46,12 @@ export class EssayManager extends Component<EssayManagerProps> {
         catch(err: any) {
             console.log(err)
         }
+    }
+
+    deleteEssay = (id: string) => {
+        const index = this.state.essays.findIndex(e => e._id === id);
+        const newEssays = [...this.state.essays]
+        newEssays.splice(index , 1);
+        this.setState({essays: newEssays})
     }
 }

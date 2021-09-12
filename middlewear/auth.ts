@@ -2,7 +2,6 @@ import bcyrypt from "bcrypt"
 import * as jwt from "jsonwebtoken"
 import express from "express"
 import config from "config"
-import { exception } from "console"
 
 export function auth(req: any, res: express.Response, next: Function) : any {
     let token = req.headers["user_auth_token"] 
@@ -19,4 +18,4 @@ export function auth(req: any, res: express.Response, next: Function) : any {
     catch(err) {
         res.status(401).send("invalid credentials")
     }
-}
+    }

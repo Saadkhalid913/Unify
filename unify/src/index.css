@@ -1053,6 +1053,19 @@
   align-self: flex-end;
   cursor: pointer;
 }
+
+.essay-viewer > .essay-delete {
+  margin-left: 1%;
+  margin-bottom: 1%;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: #ff0932;
+  width: 4rem;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+
 .essay-viewer::-webkit-scrollbar{display: none;}
 
 .essay-viewer > h2 {

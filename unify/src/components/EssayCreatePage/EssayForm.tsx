@@ -81,8 +81,8 @@ export default class EssayForm extends Component<EssayFormProps> {
 
         try {
             //@ts-ignore
-            const { data } = await axios.put(ROOT_URL + "/essays/" + this.props.match.params.id, newEssay, {headers: {user_auth_token: this.props.token}})
-            console.log(data)
+            await axios.put(ROOT_URL + "/essays/" + this.props.match.params.id, newEssay, {headers: {user_auth_token: this.props.token}})
+            this.props.history.goBack()
         }   
         catch(err: any) {
             console.log(err)
@@ -97,6 +97,7 @@ export default class EssayForm extends Component<EssayFormProps> {
         try {
             //@ts-ignore
             await axios.post(ROOT_URL + "/essays" , newEssay, {headers: {user_auth_token: this.props.token}})
+            this.props.history.goBack()
         }   
         catch(err: any) {
             console.log(err)
