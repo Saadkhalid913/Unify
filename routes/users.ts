@@ -75,9 +75,9 @@ userRouter.get("/data", auth, async (req: any, res: express.Response) => {
     const userID = req._user._id
     const userData = await userModel.findById(userID).populate("applications")
                                                      .populate("extracurriculars")
+    console.log(userData)
     return res.send(_.pick(userData, ["applications", "targetschools", "extracurriculars", "email", "username"]))
 })
-
 
 
 

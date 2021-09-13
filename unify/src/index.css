@@ -26,7 +26,7 @@
 .navbar {
   background-color: var(--blue-tone);
   width: 100%;
-  height: 5vh;
+  height: 7.5vh;
   top: 0%;
   margin-bottom: 2rem;
   box-shadow: 0 0 16px 2px grey;
@@ -528,6 +528,8 @@
   box-shadow: 0 0 16px 2px grey;
   padding: 1.5rem; 
   display:flex;
+  overflow-y: scroll;
+
   flex-direction: column;
 }
 
@@ -1017,6 +1019,7 @@
   flex-direction: column;
   box-shadow: 0 0 16px 2px grey;
   padding: 3rem;
+  overflow-y: scroll;
 }
 
 .essay-item {
@@ -1151,4 +1154,20 @@
   border-radius: 4px;
   height: 24rem
 }
+
+.essay-manager-wrapper > a {
+  background-color: var(--blue-tone);
+  border-radius: 4px;
+  padding: 0.5rem;
+  color: white;
+  align-self: center;
+  width: 6rem;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+
+
+
 
