@@ -25,8 +25,9 @@ interface User {
     username: String;
     email: String;
     extracurriculars: any[];
-    applications: Application[];
+    applications: mongoose.ObjectId[];
     targetSchools: String[];
+    save: () => void
 }
 
 
@@ -73,6 +74,16 @@ applicationRouter.put("/:id", auth, async (req: any, res: express.Response) => {
 applicationRouter.delete("/:id", auth, async (req: any, res: express.Response) => {
     const applicationID = req.params.id
     const response = await applicationModel.findByIdAndDelete(applicationID)
+
+
+    // WIP
+    const user: User = await userModel.findById(req._user._id)
+    const userApps: mongoose.ObjectId[] = [...user.applications]
+    const index = userApps.findIndex(app => app.toString() == response._id)
+    userApps.splice(index ,1);
+    user.applications = userApps;
+    await user.save()
+
     res.send(response)
 })
 
