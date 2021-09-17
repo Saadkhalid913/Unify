@@ -21,9 +21,11 @@ const UserInfoManager = (props: UserInfoManagerProps) => {
     }, [setEmail, setUsername, props.token])
 
     return (
-        <div>
-            <h1>{email}</h1>
-            <h2>{username}</h2>
+        <div className = "user-info-wrapper">
+            <div>
+                <h1>Your Email Address: {email}</h1>
+                <h2>Your Username: {username}</h2>
+            </div>
         </div>
     )
 }

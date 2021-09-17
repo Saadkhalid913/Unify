@@ -517,6 +517,7 @@
 }
 
 .app-add-form-wrapper {
+  animation: GrowIn 150ms;
   width: 100vw;
   height: 100vh;
   padding: 2%;
@@ -1013,7 +1014,7 @@
 .pfp-wrapper > * {animation:GrowIn 100ms;}
 
 .essay-manager-wrapper {
-  width: 100%;
+  width: 95%;
   height: 100%;
   display:flex;
   flex-direction: column;
@@ -1058,15 +1059,14 @@
 }
 
 .essay-viewer > .essay-delete {
-  margin-left: 1%;
-  margin-bottom: 1%;
+  font-size: 1rem;
   border-radius: 4px;
-  padding: 0.5rem;
-  background-color: #ff0932;
-  width: 4rem;
-  text-align: center;
+  background-color: rgb(255, 60, 0);
   color: white;
-  text-decoration: none;
+  padding: 0.5rem;
+  margin: 1%;
+  align-self: flex-start;
+
 }
 
 .essay-viewer::-webkit-scrollbar{display: none;}
@@ -1167,7 +1167,15 @@
   margin-top: 2rem;
 }
 
+.user-info-wrapper {
+  width: 95%;
+  box-shadow: 0 0 16px 2px grey;
+  padding: 2%;
+}
 
-
-
-
+.essay-manager-wrapper > h3 {
+  align-self: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+}

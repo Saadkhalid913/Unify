@@ -28,6 +28,7 @@ export class EssayManager extends Component<EssayManagerProps> {
     render() {
         return (<React.Fragment>
                     <div className = "essay-manager-wrapper">
+                        <h3>Your Essays</h3>
                         {this.state.essays.map(es => <div key = {es._id} className = "essay-item" onClick = {() => this.setState({selectedEssay: es})}>{es.title}</div>)}
                         <Link to = "/essays/add">Add Essay</Link>
                     </div>
