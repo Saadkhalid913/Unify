@@ -1,6 +1,3 @@
-// this module contains the required 
-
-
 import express, { response } from "express"
 const emailValidationPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 import { userModel } from "../models/models"
@@ -120,7 +117,7 @@ export async function validateApplicationBody(req: any, res: express.Response): 
         const isValid = await schema.validateAsync(req.body)
         return new Promise((resolve, reject) => resolve(true))
     }
-    catch(err){
+    catch(err: any){
         res.status(400).send(err.details[0].message)
         return new Promise((resolve, reject) => resolve(false))
     }
